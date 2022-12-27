@@ -1,0 +1,17 @@
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\bin\Debug\server.UI.exe.config
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\bin\Debug\server.UI.exe
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\bin\Debug\server.UI.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\bin\Debug\server.Entities.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\bin\Debug\server.Model.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\bin\Debug\server.DAL.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\bin\Debug\server.Entities.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\bin\Debug\server.Model.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\bin\Debug\server.DAL.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\obj\Debug\server.UI.csproj.AssemblyReference.cache
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\obj\Debug\server.UI.csproj.SuggestedBindingRedirects.cache
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\obj\Debug\server.UI.Properties.Resources.resources
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\obj\Debug\server.UI.csproj.GenerateResource.cache
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\obj\Debug\server.UI.csproj.CoreCompileInputs.cache
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\obj\Debug\server.UI.csproj.CopyComplete
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\obj\Debug\server.UI.exe
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.UI\obj\Debug\server.UI.pdb

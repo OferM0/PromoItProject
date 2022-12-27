@@ -1,0 +1,6 @@
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.DAL\bin\Debug\server.DAL.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.DAL\bin\Debug\server.DAL.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.DAL\obj\Debug\server.DAL.csproj.AssemblyReference.cache
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.DAL\obj\Debug\server.DAL.csproj.CoreCompileInputs.cache
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.DAL\obj\Debug\server.DAL.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.DAL\obj\Debug\server.DAL.pdb
