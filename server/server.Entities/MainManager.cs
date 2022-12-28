@@ -14,6 +14,7 @@ namespace server.Entities
     {
         public List<Product> productsList = new List<Product>();
         public List<Contact> contactsList = new List<Contact>();
+        public Dictionary<string, User> usersList = new Dictionary<string, User>();
 
         private MainManager() { }
         private static readonly MainManager _instance = new MainManager();
@@ -21,6 +22,7 @@ namespace server.Entities
 
         public Products products = new Products();
         public Contacts contacts = new Contacts();
+        public Users users = new Users();
 
         public void Init()
         {
@@ -29,6 +31,10 @@ namespace server.Entities
         public void Init2()
         {
             contacts.GetContactsFromDB();
+        }
+        public void Init3()
+        {
+            users.GetUsersFromDB();
         }
     }
 }

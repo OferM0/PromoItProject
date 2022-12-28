@@ -9,3 +9,14 @@ C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\serve
 C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.Data.Sql\obj\Debug\server.Data.Sql.csproj.CopyComplete
 C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.Data.Sql\obj\Debug\server.Data.Sql.dll
 C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.Data.Sql\obj\Debug\server.Data.Sql.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\bin\Debug\server.Data.Sql.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\bin\Debug\server.Data.Sql.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\bin\Debug\server.DAL.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\bin\Debug\server.Model.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\bin\Debug\server.DAL.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\bin\Debug\server.Model.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\obj\Debug\server.Data.Sql.csproj.AssemblyReference.cache
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\obj\Debug\server.Data.Sql.csproj.CoreCompileInputs.cache
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\obj\Debug\server.Data.Sql.csproj.CopyComplete
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\obj\Debug\server.Data.Sql.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\obj\Debug\server.Data.Sql.pdb

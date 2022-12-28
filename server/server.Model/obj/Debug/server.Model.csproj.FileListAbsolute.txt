@@ -4,3 +4,9 @@ C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\serve
 C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.Model\obj\Debug\server.Model.csproj.CoreCompileInputs.cache
 C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.Model\obj\Debug\server.Model.dll
 C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\server\server.Model\obj\Debug\server.Model.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Model\bin\Debug\server.Model.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Model\bin\Debug\server.Model.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Model\obj\Debug\server.Model.csproj.AssemblyReference.cache
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Model\obj\Debug\server.Model.csproj.CoreCompileInputs.cache
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Model\obj\Debug\server.Model.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Model\obj\Debug\server.Model.pdb

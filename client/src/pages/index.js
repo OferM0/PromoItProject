@@ -5,3 +5,5 @@ export * from "./home/home.page.jsx";
 export * from "./notFound/notFound.page.jsx";
 export * from "./productDetails/productDetails.component.jsx";
 export * from "./dashBoard/dashBoard.page.jsx";
+export * from "./registration/registration.page.jsx";
+export * from "./profileEdit/profileEdit.page.jsx";

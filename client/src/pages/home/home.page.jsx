@@ -5,15 +5,17 @@ export const HomePage = (props) => {
   return (
     <div className="home">
       <div className="information">
-        <h3 className="title">Our Luxury</h3>
-        <h1>Find Your Watch Here</h1>
+        <h3 className="title">#PromoIt</h3>
+        <h1>Let's Promote Our Society</h1>
         <p className="home-text">
-          Today NorthWind expresses its unique vision of the past, present and
-          future of mechanical watchmaking through its numerous collections of
-          watches for men.
+          Today ProLobby expresses its unique vision of the future.
+          <br />A System to promote Social Agenda for a better society.
+          <br />A better society means more opportunities.
+          <br />
+          you can find out those opportunities here.
         </p>
-        <Link to="/products">
-          <button className="buy-now">BUY NOW</button>
+        <Link to="/register">
+          <button className="buy-now">START NOW</button>
         </Link>
       </div>
     </div>

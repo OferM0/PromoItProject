@@ -56,7 +56,7 @@ export const ContactsPage = (props) => {
             <div className="form-group">
               <input
                 type="text"
-                className="form-control"
+                className="form-control form-control-contact"
                 name="name"
                 id="name"
                 placeholder="Name"
@@ -71,7 +71,7 @@ export const ContactsPage = (props) => {
             <div className="form-group">
               <input
                 type="email"
-                className="form-control"
+                className="form-control form-control-contact"
                 name="email"
                 id="email"
                 placeholder="Email"
@@ -86,7 +86,7 @@ export const ContactsPage = (props) => {
             <div className="form-group">
               <input
                 type="text"
-                className="form-control"
+                className="form-control form-control-contact"
                 name="phone"
                 id="phone"
                 placeholder="Phone"
@@ -101,7 +101,7 @@ export const ContactsPage = (props) => {
             <div className="form-group">
               <textarea
                 name="message"
-                className="form-control"
+                className="form-control form-control-contact"
                 id="message"
                 cols="30"
                 rows="8"

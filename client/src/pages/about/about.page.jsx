@@ -6,12 +6,16 @@ export const AboutPage = (props) => {
     <div className="about">
       <div>
         <p className="text">
-          NorthWind watches are crafted with scrupulous attention to detail.
-          Explore the NorthWind collection of prestigious, high-precision
-          timepieces. NorthWind offers a wide assortment of Classic and
-          Professional watch models to suit any wrist. Discover the broad
-          selection of NorthWind watches to find a perfect combination of style
-          and functionality.
+          ProLobby Company seeking to build a new system - "PromoIt," that
+          handles the social promotion of the non-profit organization and other
+          related campaigns.
+          <br /> For the first version, we only use the Twitter social network.
+          The system's goal is to promote social campaigns.
+          <br />
+          The means to do so involve onboarding business organizations that
+          donate products, onboarding non-profit organizations that want to
+          promote campaigns, and onboarding social activists - users of Twitter
+          that can promote those campaigns.
         </p>
       </div>
       <div class="contact-info">

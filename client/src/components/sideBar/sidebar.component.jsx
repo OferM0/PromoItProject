@@ -6,6 +6,7 @@ import CallIcon from "@mui/icons-material/Call";
 import ProductIcon from "@mui/icons-material/Store";
 import FaceIconfrom from "@mui/icons-material/Face";
 import LogOutIconfrom from "@mui/icons-material/Logout";
+import RegisterIcon from "@mui/icons-material/AppRegistration";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -39,6 +40,12 @@ export const SideBar = (props) => {
             <Link to="/products" className="nav-link link-dark">
               <ProductIcon />
               <span className="section-name">Products</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/register" className="nav-link link-dark">
+              <RegisterIcon />
+              <span className="section-name">register</span>
             </Link>
           </li>
           <li>

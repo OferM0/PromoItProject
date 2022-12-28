@@ -137,3 +137,28 @@ h6 {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+
+.editBtn {
+  border: #e0e0e0 1px solid;
+  border-radius: 10px;
+  text-align: center;
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 100px;
+  margin-left: 27px !important;
+  color: white;
+}
+
+.editBtn:hover {
+  color: #f29263;
+  border: #ee5a6f 1px solid;
+  background-color: white !important;
+  cursor: pointer;
+}
+
+.editBtn:active {
+  position: relative;
+  top: 10px;
+}

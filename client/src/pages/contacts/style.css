@@ -52,3 +52,7 @@
 .field {
   margin-bottom: 20px;
 }
+
+.form-control-contact {
+  margin-top: 0 !important;
+}

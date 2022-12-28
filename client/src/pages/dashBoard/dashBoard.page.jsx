@@ -31,7 +31,7 @@ export const Dashboard = () => {
 
   return (
     <>
-      {role === "company" ? (
+      {role === "Company" ? (
         <>
           <SideBar></SideBar>
           <Routes>

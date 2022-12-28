@@ -17,7 +17,7 @@ namespace server.DAL
 
         public static void RunNonQueryCommand(string sqlQuery)
         {
-            string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Northwind;Data Source=localhost\\sqlexpress"/*ConfigurationManager.AppSettings["connectionString"]*/;
+            string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=PromoIt;Data Source=localhost\\sqlexpress"/*ConfigurationManager.AppSettings["connectionString"]*/;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string queryString = sqlQuery;
@@ -32,7 +32,7 @@ namespace server.DAL
         }
         public static void RunCommand(string sqlQuery, SetDataReader_delegate func)
         {
-            string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Northwind;Data Source=localhost\\sqlexpress"/*ConfigurationManager.AppSettings["connectionString"]*/;
+            string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=PromoIt;Data Source=localhost\\sqlexpress"/*ConfigurationManager.AppSettings["connectionString"]*/;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string queryString = sqlQuery;
@@ -52,7 +52,7 @@ namespace server.DAL
         public static object RunCommandResult(string sqlQuery, SetResulrDataReader_delegate func)
         {
             object ret = null;
-            string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Northwind;Data Source=localhost\\sqlexpress"/*ConfigurationManager.AppSettings["connectionString"]*/;
+            string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=PromoIt;Data Source=localhost\\sqlexpress"/*ConfigurationManager.AppSettings["connectionString"]*/;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string queryString = sqlQuery;
