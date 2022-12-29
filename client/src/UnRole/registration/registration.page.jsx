@@ -7,8 +7,9 @@ import { addUserDetails } from "../../services/user.service";
 //---------------------------------------------
 import { getRolesById } from "../../services/roles.service";
 //---------------------------------------------
+
 const showToastMessage = () => {
-  toast.success("We recived your registration!", {
+  toast.success("We recived your registration, Please Login again!", {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
@@ -87,6 +88,9 @@ export const RegistrationPage = () => {
   const [phone, setPhone] = useState("");
   const [url, setUrl] = useState("");
   const { user, logout } = useAuth0();
+  const sleep = (ms) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
   //-------------------------------------------
   // const [role, setRole] = useState("");
   // const handleRole = async () => {
@@ -248,7 +252,7 @@ export const RegistrationPage = () => {
                   </div>
                   <button
                     className="btn-Register"
-                    onClick={() => {
+                    onClick={async () => {
                       if (
                         name == "" ||
                         address == "" ||
@@ -259,6 +263,8 @@ export const RegistrationPage = () => {
                       } else {
                         handleSubmit();
                         showToastMessage();
+                        await sleep(2000); //we want the user to be notified to the message
+                        logout({ returnTo: window.location.origin });
                       }
                     }}
                   >

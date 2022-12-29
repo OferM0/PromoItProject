@@ -1,0 +1,4 @@
+.CompanyDashBoard {
+  display: flex;
+  flex-direction: row;
+}

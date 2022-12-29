@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./style.css";
-import { UserDetailsContext } from "../../context/userDetails.context";
 import EditIcon from "@mui/icons-material/Edit";
 import { Link } from "react-router-dom";
-
+import { UserDetailsContext } from "../../context/userDetails.context";
 function ProfilePage(props) {
   const { user } = useAuth0();
-  //const [userDetails] = useContext({ UserDetailsContext });
+  const { userDetails } = useContext(UserDetailsContext);
   //console.log(userDetails);
   return (
     <div className="profilePage">
@@ -51,12 +50,14 @@ function ProfilePage(props) {
                   <div className="row">
                     <div className="col-sm-6">
                       <p className="m-b-10 f-w-600">Address</p>
-                      <h6 className="text-muted f-w-400">{user.address}</h6>
+                      <h6 className="text-muted f-w-400">
+                        {userDetails.Address}
+                      </h6>
                     </div>
                     <div className="col-sm-6">
                       <p className="m-b-10 f-w-600">Phone</p>
                       <h6 className="text-muted f-w-400">
-                        {user.phone_number}
+                        {userDetails.Phone}
                       </h6>
                     </div>
                   </div>

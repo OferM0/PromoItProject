@@ -27,7 +27,7 @@ export const getUserById = async (UserID) => {
   try {
     let endpoint = startEndpoint + `/Users/Get/${UserID}`;
     let response = await axios.get(endpoint);
-    return response.data;
+    return response;
   } catch (e) {
     console.log(e);
   }

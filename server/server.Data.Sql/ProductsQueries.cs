@@ -17,16 +17,15 @@ namespace server.Data.Sql
             while (reader.Read())
             {
                 Product product = new Product();
-                product.ProductID = reader.GetInt32(reader.GetOrdinal("ProductID"));
-                product.ProductName = reader.GetString(reader.GetOrdinal("ProductName"));
-                product.SupplierID = reader.GetInt32(reader.GetOrdinal("SupplierID"));
-                product.CategoryID = reader.GetInt32(reader.GetOrdinal("CategoryID"));
-                product.QuantityPerUnit = reader.GetString(reader.GetOrdinal("QuantityPerUnit"));
-                product.UnitPrice = reader.GetDecimal(reader.GetOrdinal("UnitPrice"));
-                product.UnitsInStock = reader.GetInt16(reader.GetOrdinal("UnitsInStock"));
-                product.UnitsOnOrder = reader.GetInt16(reader.GetOrdinal("UnitsOnOrder"));
-                product.ReorderLevel = reader.GetInt16(reader.GetOrdinal("ReorderLevel"));
-                product.Discontinued = reader.GetBoolean(reader.GetOrdinal("Discontinued"));
+                product.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                product.Name = reader.GetString(reader.GetOrdinal("Name"));
+                product.Description = reader.GetString(reader.GetOrdinal("Description"));
+                product.Price = reader.GetDecimal(reader.GetOrdinal("Price"));
+                product.ActivistID = reader.GetString(reader.GetOrdinal("ActivistID"));
+                product.CompanyID = reader.GetString(reader.GetOrdinal("CompanyID"));
+                product.OrganizationID = reader.GetString(reader.GetOrdinal("OrganizationID"));
+                product.CampaignID = reader.GetInt32(reader.GetOrdinal("CampaignID"));
+                product.DonatedByActivist = reader.GetBoolean(reader.GetOrdinal("DonatedByActivist"));
                 productsList.Add(product);
             }
             return productsList;
@@ -37,16 +36,15 @@ namespace server.Data.Sql
 
             while (reader.Read())
             {
-                product.ProductID = reader.GetInt32(reader.GetOrdinal("ProductID"));
-                product.ProductName = reader.GetString(reader.GetOrdinal("ProductName"));
-                product.SupplierID = reader.GetInt32(reader.GetOrdinal("SupplierID"));
-                product.CategoryID = reader.GetInt32(reader.GetOrdinal("CategoryID"));
-                product.QuantityPerUnit = reader.GetString(reader.GetOrdinal("QuantityPerUnit"));
-                product.UnitPrice = reader.GetDecimal(reader.GetOrdinal("UnitPrice"));
-                product.UnitsInStock = reader.GetInt16(reader.GetOrdinal("UnitsInStock"));
-                product.UnitsOnOrder = reader.GetInt16(reader.GetOrdinal("UnitsOnOrder"));
-                product.ReorderLevel = reader.GetInt16(reader.GetOrdinal("ReorderLevel"));
-                product.Discontinued = reader.GetBoolean(reader.GetOrdinal("Discontinued"));
+                product.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                product.Name = reader.GetString(reader.GetOrdinal("Name"));
+                product.Description = reader.GetString(reader.GetOrdinal("Description"));
+                product.Price = reader.GetDecimal(reader.GetOrdinal("Price"));
+                product.ActivistID = reader.GetString(reader.GetOrdinal("ActivistID"));
+                product.CompanyID = reader.GetString(reader.GetOrdinal("CompanyID"));
+                product.OrganizationID = reader.GetString(reader.GetOrdinal("OrganizationID"));
+                product.CampaignID = reader.GetInt32(reader.GetOrdinal("CampaignID"));
+                product.DonatedByActivist = reader.GetBoolean(reader.GetOrdinal("DonatedByActivist"));
             }
             return product;
         }
@@ -63,11 +61,11 @@ namespace server.Data.Sql
             }
         }
 
-        public void InsertProductToDB(int ProductID, string ProductName, int SupplierID, int CategoryID, string QuantityPerUnit, decimal UnitPrice, Int16 UnitsInStock, Int16 UnitsOnOrder, Int16 ReorderLevel, bool Discontinued)
+        public void InsertProductToDB(string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist)
         {
             try
             {
-                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Products(ProductID, ProductName, SupplierID, CategoryID,QuantityPerUnit,UnitPrice,UnitsInStock,UnitsOnOrder,ReorderLevel,Discontinued) Values({ProductID},'{ProductName}',{SupplierID},'{CategoryID}'),'{QuantityPerUnit}',{UnitPrice},'{UnitsInStock}'),'{UnitsOnOrder}',{ReorderLevel},'{Discontinued}')");
+                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Products(Name, Description, Price,ActivistID,CompanyID,OrganizationID,CampaignID,DonatedByActivist) Values('{Name}','{Description}','{Price}','{ActivistID}','{CompanyID}','{OrganizationID}'),'{CampaignID}','{DonatedByActivist}')");
             }
             catch (Exception ex)
             {
@@ -78,7 +76,7 @@ namespace server.Data.Sql
         {
             try
             {
-                return DAL.SqlQuery.RunCommandResult($"select * from Products where ProductID= '{id}'", BuildProduct);
+                return DAL.SqlQuery.RunCommandResult($"select * from Products where Id= '{id}'", BuildProduct);
             }
             catch (Exception ex)
             {
@@ -90,7 +88,7 @@ namespace server.Data.Sql
         {
             try
             {
-                DAL.SqlQuery.RunNonQueryCommand($"Delete from Products where ProductID= '{id}'");
+                DAL.SqlQuery.RunNonQueryCommand($"Delete from Products where Id= '{id}'");
             }
             catch (Exception ex)
             {
@@ -98,11 +96,11 @@ namespace server.Data.Sql
             }
         }
 
-        public void UpdateProductInDB(string id, int ProductID, string ProductName, int SupplierID, int CategoryID, string QuantityPerUnit, decimal UnitPrice, Int16 UnitsInStock, Int16 UnitsOnOrder, Int16 ReorderLevel, bool Discontinued)
+        public void UpdateProductInDB(string Id, string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist)
         {
             try
             {
-                DAL.SqlQuery.RunNonQueryCommand($"Update Products set ProductID='{ProductID}' , ProductName='{ProductName}' , SupplierID='{SupplierID}' , CategoryID='{CategoryID}', QuantityPerUnit='{QuantityPerUnit}' , UnitPrice='{UnitPrice}' , UnitsInStock='{UnitsInStock}' , UnitsOnOrder='{UnitsOnOrder}' , ReorderLevel='{ReorderLevel}' , Discontinued='{Discontinued}' where ProductID= '{id}'");
+                DAL.SqlQuery.RunNonQueryCommand($"Update Products set Name='{Name}' , Description='{Description}' , Price='{Price}', ActivistID='{ActivistID}' , CompanyID='{CompanyID}' , OrganizationID='{OrganizationID}' , CampaignID='{CampaignID}' , DonatedByActivist='{DonatedByActivist}' where Id= '{Id}'");
             }
             catch (Exception ex)
             {

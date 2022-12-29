@@ -1,0 +1,4 @@
+.ActivistDashBoard {
+  display: flex;
+  flex-direction: row;
+}

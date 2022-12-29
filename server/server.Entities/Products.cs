@@ -33,30 +33,28 @@ namespace server.Entities
             return product;
         }
 
-        public void AddNewProduct(int ProductID, string ProductName, int SupplierID, int CategoryID, string QuantityPerUnit, decimal UnitPrice, Int16 UnitsInStock, Int16 UnitsOnOrder, Int16 ReorderLevel, bool Discontinued)
+        public void AddNewProduct(string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist)
         {
             Product product = new Product
             {
-                ProductID = ProductID,
-                ProductName = ProductName,
-                SupplierID = SupplierID,
-                CategoryID = CategoryID,
-                QuantityPerUnit = QuantityPerUnit,
-                UnitPrice = UnitPrice,
-                UnitsInStock = UnitsInStock,
-                UnitsOnOrder = UnitsOnOrder,
-                ReorderLevel = ReorderLevel,
-                Discontinued = Discontinued
+                Name = Name,
+                Description = Description,
+                Price = Price,
+                ActivistID = ActivistID,
+                CompanyID = CompanyID,
+                OrganizationID = OrganizationID,
+                CampaignID = CampaignID,
+                DonatedByActivist = DonatedByActivist
             };
             MainManager.Instance.productsList.Add(product);
 
-            productsQueries.InsertProductToDB(ProductID, ProductName, SupplierID, CategoryID, QuantityPerUnit, UnitPrice, UnitsInStock, UnitsOnOrder, ReorderLevel, Discontinued);       
+            productsQueries.InsertProductToDB(Name, Description, Price, ActivistID, CompanyID, OrganizationID, CampaignID, DonatedByActivist);       
         }
 
-        public void UpdateProductById(string id, int ProductID, string ProductName, int SupplierID, int CategoryID, string QuantityPerUnit, decimal UnitPrice, Int16 UnitsInStock, Int16 UnitsOnOrder, Int16 ReorderLevel, bool Discontinued)
+        public void UpdateProductById(string Id, string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist)
         {
-            productsQueries.UpdateProductInDB(id, ProductID, ProductName, SupplierID, CategoryID, QuantityPerUnit, UnitPrice, UnitsInStock, UnitsOnOrder, ReorderLevel, Discontinued);
-            //MainManager.Instance.contactsList[int.Parse(id)]=new Contact { ContactID=int.Parse(id), Name=Name, Email=Email, Phone=Phone, Message=Message};
+            productsQueries.UpdateProductInDB(Id, Name, Description, Price, ActivistID, CompanyID, OrganizationID, CampaignID, DonatedByActivist);
+            //MainManager.Instance.productList[int.Parse(id)]=new Product { ProductID=int.Parse(id), Name=Name, Email=Email, Phone=Phone, Message=Message};
         }
 
         public Product GetProductFromList(string id)
@@ -72,7 +70,7 @@ namespace server.Entities
             }
             else
             {
-                MainManager.Instance.contactsList.RemoveAt(int.Parse(id));*/
+                MainManager.Instance.productsList.RemoveAt(int.Parse(id));*/
             productsQueries.DeleteProductFromDB(id);
             //}
         }

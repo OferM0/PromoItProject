@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivistsQueries.cs" />
+    <Compile Include="CampaignsQueries.cs" />
+    <Compile Include="CompaniesQueries.cs" />
     <Compile Include="ContactsQueries.cs" />
+    <Compile Include="OrganizationsQueries.cs" />
     <Compile Include="ProductsQueries.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsersQueries.cs" />

@@ -1,0 +1,4 @@
+.ManagerDashBoard {
+  display: flex;
+  flex-direction: row;
+}
