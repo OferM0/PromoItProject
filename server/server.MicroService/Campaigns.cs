@@ -33,7 +33,7 @@ namespace server.MicroService
             {
                 case "Add":
                     Campaign c = System.Text.Json.JsonSerializer.Deserialize<Campaign>(req.Body); //convert from json to campaigns object after post(react-axios)
-                    helper.AddNewCampaign(c.OrganizationID, c.Name, c.Description, c.Url, c.Hashtag, c.Active); //add to DB- run sql command and to list
+                    helper.AddNewCampaign(c.OrganizationID, c.Name, c.Description, c.Url, c.Hashtag); //add to DB- run sql command and to list
                     responseMessage = System.Text.Json.JsonSerializer.Serialize(c); //to see if the new campaign object updated
                     return new OkObjectResult(responseMessage);
                     break;
@@ -49,7 +49,7 @@ namespace server.MicroService
                     if (id != null) //update only by id
                     {
                         Campaign c2 = System.Text.Json.JsonSerializer.Deserialize<Campaign>(req.Body);
-                        helper.UpdateCampaignById(id, c2.OrganizationID, c2.Name, c2.Description, c2.Url, c2.Hashtag, c2.Active);
+                        helper.UpdateCampaignById(id, c2.Name, c2.Description, c2.Url, c2.Hashtag);
                         responseMessage = System.Text.Json.JsonSerializer.Serialize(c2);
                         return new OkObjectResult(responseMessage);
                     }
@@ -59,7 +59,7 @@ namespace server.MicroService
                     if (id == null) //get all
                     {
                         MainManager.Instance.Init7();
-                        responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.contactsList);
+                        responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.campaignsList);
                         return new OkObjectResult(responseMessage);
                     }
                     else //get by id

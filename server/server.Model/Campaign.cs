@@ -14,6 +14,5 @@ namespace server.Model
         public string Description { get; set; }
         public string Url { get; set; }
         public string Hashtag { get; set; }
-        public bool Active { get; set; }
     }
 }

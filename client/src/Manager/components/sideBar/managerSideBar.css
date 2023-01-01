@@ -9,7 +9,7 @@
   margin: 0 !important;
 }
 
-a {
+.aa a {
   width: 170px !important;
   text-decoration: none !important;
   display: flex !important;
@@ -18,7 +18,7 @@ a {
   gap: 10px !important;
 }
 
-a:hover {
+aa:hover {
   background-color: #5b7d8d !important;
 }
 

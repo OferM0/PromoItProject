@@ -65,7 +65,7 @@ namespace server.Data.Sql
         {
             try
             {
-                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Products(Name, Description, Price,ActivistID,CompanyID,OrganizationID,CampaignID,DonatedByActivist) Values('{Name}','{Description}','{Price}','{ActivistID}','{CompanyID}','{OrganizationID}'),'{CampaignID}','{DonatedByActivist}')");
+                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Products(Name, Description, Price,ActivistID,CompanyID,OrganizationID,CampaignID,DonatedByActivist) Values('{Name}','{Description}','{Price}','{ActivistID}','{CompanyID}','{OrganizationID}','{CampaignID}','{DonatedByActivist}')");
             }
             catch (Exception ex)
             {

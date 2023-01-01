@@ -23,7 +23,6 @@ namespace server.Data.Sql
                 campaign.Description = reader.GetString(reader.GetOrdinal("Description"));
                 campaign.Url = reader.GetString(reader.GetOrdinal("Url"));
                 campaign.Hashtag = reader.GetString(reader.GetOrdinal("Hashtag"));
-                campaign.Active = reader.GetBoolean(reader.GetOrdinal("Active"));
                 campaignsList.Add(campaign);
             }
             return campaignsList;
@@ -40,7 +39,6 @@ namespace server.Data.Sql
                 campaign.Description = reader.GetString(reader.GetOrdinal("Description"));
                 campaign.Url = reader.GetString(reader.GetOrdinal("Url"));
                 campaign.Hashtag = reader.GetString(reader.GetOrdinal("Hashtag"));
-                campaign.Active = reader.GetBoolean(reader.GetOrdinal("Active"));
             }
             return campaign;
         }
@@ -57,11 +55,11 @@ namespace server.Data.Sql
             }
         }
 
-        public void InsertCampaignToDB(string OrganizationID, string Name, string Description, string Url, string Hashtag, bool Active)
+        public void InsertCampaignToDB(string OrganizationID, string Name, string Description, string Url, string Hashtag)
         {
             try
             {
-                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Campaigns(OrganizationID, Name, Description, Url,Hashtag,Active) Values('{OrganizationID}'),'{Name}','{Description}','{Url}','{Hashtag}','{Active}')");
+                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Campaigns(OrganizationID, Name, Description, Url, Hashtag) Values('{OrganizationID}','{Name}','{Description}','{Url}','{Hashtag}')");
             }
             catch (Exception ex)
             {
@@ -92,11 +90,11 @@ namespace server.Data.Sql
             }
         }
 
-        public void UpdateCampaignInDB(string Id, string OrganizationID, string Name, string Description, string Url, string Hashtag, bool Active)
+        public void UpdateCampaignInDB(string Id, string Name, string Description, string Url, string Hashtag)
         {
             try
             {
-                DAL.SqlQuery.RunNonQueryCommand($"Update Campaigns set OrganizationID='{OrganizationID}' ,Name='{Name}' , Description='{Description}' , Url='{Url}', Hashtag='{Hashtag}' , Active='{Active}' where Id= '{Id}'");
+                DAL.SqlQuery.RunNonQueryCommand($"Update Campaigns set Name='{Name}' , Description='{Description}' , Url='{Url}', Hashtag='{Hashtag}' where Id= '{Id}'");
             }
             catch (Exception ex)
             {

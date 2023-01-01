@@ -99,6 +99,10 @@ h6 {
   color: #919aa3 !important;
 }
 
+.text-muted:hover {
+  background-color: transparent !important;
+}
+
 .b-b-default {
   border-bottom: 1px solid #e0e0e0;
 }

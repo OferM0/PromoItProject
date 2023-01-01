@@ -24,31 +24,34 @@ export const ActivistSideBar = (props) => {
             </Link>
           </li>
           <li>
-            <Link to="/about" className="nav-link link-dark">
+            <Link to="/about" className="nav-link link-dark aa">
               <InfoIcon />
               <span className="section-name">About</span>
             </Link>
           </li>
           <li>
-            <Link to="/contacts" className="nav-link link-dark">
+            <Link to="/contacts" className="nav-link link-dark aa">
               <CallIcon />
               <span className="section-name">Contact Us</span>
             </Link>
           </li>
           <li>
-            <Link to="/activist/campaigns" className="nav-link link-dark">
+            <Link to="/activist/campaigns" className="nav-link link-dark aa">
               <CampaignIcon />
               <span className="section-name">Campaigns</span>
             </Link>
           </li>
           <li>
-            <Link to="/activist/products" className="nav-link link-dark">
+            <Link to="/activist/products" className="nav-link link-dark aa">
               <ProductIcon />
               <span className="section-name">My Products</span>
             </Link>
           </li>
           <li>
-            <Link to="/activistProfile" className="my-name nav-link link-dark">
+            <Link
+              to="/activistProfile"
+              className="my-name nav-link link-dark aa"
+            >
               <FaceIconfrom />
               <span className="section-name">Profile</span>
             </Link>
@@ -56,7 +59,7 @@ export const ActivistSideBar = (props) => {
           <li>
             <a
               href="#"
-              className="nav-link link-dark"
+              className="nav-link link-dark aa"
               onClick={() => logout({ returnTo: window.location.origin })}
             >
               <LogOutIconfrom />

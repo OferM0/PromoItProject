@@ -25,39 +25,45 @@ export const OrganizationSideBar = (props) => {
             </Link>
           </li>
           <li>
-            <Link to="/about" className="nav-link link-dark">
+            <Link to="/about" className="nav-link link-dark aa">
               <InfoIcon />
               <span className="section-name">About</span>
             </Link>
           </li>
           <li>
-            <Link to="/contacts" className="nav-link link-dark">
+            <Link to="/contacts" className="nav-link link-dark aa">
               <CallIcon />
               <span className="section-name">Contact Us</span>
             </Link>
           </li>
           <li>
-            <Link to="/organization/campaigns" className="nav-link link-dark">
+            <Link
+              to="/organization/campaigns"
+              className="nav-link link-dark aa"
+            >
               <CampaignIcon />
               <span className="section-name">My Campaigns</span>
             </Link>
           </li>
           <li>
-            <Link to="/organization/campaign" className="nav-link link-dark">
+            <Link
+              to="/organization/campaign/create"
+              className="nav-link link-dark aa"
+            >
               <CreateIcon />
               <span className="section-name">Create New Campaign</span>
             </Link>
           </li>
-          <li>
-            <Link to="/organization/products" className="nav-link link-dark">
+          {/* <li>
+            <Link to="/organization/products" className="nav-link link-dark aa">
               <ProductIcon />
               <span className="section-name">Products Donated</span>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               to="/organizationProfile"
-              className="my-name nav-link link-dark"
+              className="my-name nav-link link-dark aa"
             >
               <FaceIconfrom />
               <span className="section-name">Profile</span>
@@ -66,7 +72,7 @@ export const OrganizationSideBar = (props) => {
           <li>
             <a
               href="#"
-              className="nav-link link-dark"
+              className="nav-link link-dark aa"
               onClick={() => logout({ returnTo: window.location.origin })}
             >
               <LogOutIconfrom />

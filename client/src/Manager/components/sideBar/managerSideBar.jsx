@@ -22,20 +22,20 @@ export const ManagerSideBar = (props) => {
             </Link>
           </li>
           <li>
-            <Link to="/about" className="nav-link link-dark">
+            <Link to="/about" className="nav-link link-dark aa">
               <CampaignIcon />
               <span className="section-name">Campaigns</span>
             </Link>
           </li>
           <li>
-            <Link to="/contacts" className="nav-link link-dark">
+            <Link to="/contacts" className="nav-link link-dark aa">
               <TweetIcon />
               <span className="section-name">Tweets</span>
             </Link>
           </li>
 
           <li>
-            <Link to="/profile" className="my-name nav-link link-dark">
+            <Link to="/profile" className="my-name nav-link link-dark aa">
               <FaceIconfrom />
               <span className="section-name">Profile</span>
             </Link>
@@ -43,7 +43,7 @@ export const ManagerSideBar = (props) => {
           <li>
             <a
               href="#"
-              className="nav-link link-dark"
+              className="nav-link link-dark aa"
               onClick={() => logout({ returnTo: window.location.origin })}
             >
               <LogOutIconfrom />

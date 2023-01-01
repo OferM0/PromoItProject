@@ -1,11 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./companyProfile.css";
 import EditIcon from "@mui/icons-material/Edit";
 import { Link } from "react-router-dom";
 import { UserDetailsContext } from "../../../context/userDetails.context";
+import { getProducts } from "../../../services/product.service";
 
 export const CompanyProfilePage = (props) => {
+  const [productsArr, setProductsArr] = useState([]);
+
+  const fetchData = async () => {
+    let response = await getProducts();
+    if (response.status === 200) {
+      setProductsArr(response.data);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const { user } = useAuth0();
   const { userDetails } = useContext(UserDetailsContext);
   //console.log(userDetails);
@@ -26,7 +40,15 @@ export const CompanyProfilePage = (props) => {
                   </div>
                   <h6 className="profileName">{userDetails.Name}</h6>
                   <h6>{userDetails.Role}</h6>
-                  <div className="moneyStatus">Money Donated: 0 $</div>
+                  <div className="moneyStatus">
+                    Money Donated:{" "}
+                    {productsArr
+                      .filter((obj) => obj.CompanyID === user.sub)
+                      .reduce((accumulator, object) => {
+                        return accumulator + object.Price;
+                      }, 0)}{" "}
+                    $
+                  </div>
                   <Link to="/companyProfile/edit" className="editBtn">
                     <span>Edit Profile</span>
                     <EditIcon />
@@ -67,7 +89,13 @@ export const CompanyProfilePage = (props) => {
                   <div className="row">
                     <div className="col-sm-6">
                       <p className="m-b-10 f-w-600">Products Donated</p>
-                      <h6 className="text-muted f-w-400"></h6>
+                      <h6 className="text-muted f-w-400">
+                        {
+                          productsArr.filter(
+                            (obj) => obj.CompanyID === user.sub
+                          ).length
+                        }
+                      </h6>
                     </div>
                   </div>
                 </div>

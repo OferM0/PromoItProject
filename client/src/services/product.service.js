@@ -24,10 +24,10 @@ export const getProductById = async (id) => {
 };
 
 //add product
-export const addProduct = async (product) => {
+export const addProduct = async (details) => {
   try {
     let endpoint = startEndpoint + "/Products/Add";
-    await axios.post(endpoint, product);
+    await axios.post(endpoint, details);
   } catch (e) {
     console.log(e);
   }

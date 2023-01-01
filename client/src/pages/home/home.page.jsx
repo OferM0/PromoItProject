@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import "./style.css";
+import { UserDetailsContext } from "../../context/userDetails.context";
 import { Link } from "react-router-dom";
 export const HomePage = (props) => {
+  const { userDetails } = useContext(UserDetailsContext);
   return (
     <div className="home">
       <div className="information">
@@ -14,9 +16,31 @@ export const HomePage = (props) => {
           <br />
           you can find out those opportunities here.
         </p>
-        <Link to="/register">
-          <button className="buy-now">START NOW</button>
-        </Link>
+        {userDetails.Role === "Social Activist" ? (
+          <>
+            <Link to="/register">
+              <button className="buy-now">START NOW</button>
+            </Link>
+          </>
+        ) : userDetails.Role === "Company" ? (
+          <>
+            <Link to="/company/campaigns">
+              <button className="buy-now">START NOW</button>
+            </Link>
+          </>
+        ) : userDetails.Role === "Non-Profit Organization" ? (
+          <>
+            <Link to="/organization/campaign/create">
+              <button className="buy-now">START NOW</button>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/register">
+              <button className="buy-now">START NOW</button>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

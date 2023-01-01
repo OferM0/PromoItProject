@@ -55,4 +55,5 @@
 
 .form-control-contact {
   margin-top: 0 !important;
+  max-height: 200px;
 }
