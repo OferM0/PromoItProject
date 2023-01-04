@@ -11,8 +11,8 @@ export const CompanyProductDetailsPage = () => {
   const [product, setProduct] = useState([]);
   const { userDetails } = useContext(UserDetailsContext);
   const location = useLocation();
-  const { Id } = location.state;
-  const [organizationDetails, setOrganizationDetails] = useState([]);
+  const { Id, OrganizationID } = location.state;
+  const [organizationName, setOrganizationName] = useState("");
 
   const fetchData = async () => {
     let response = await getProductById(Id);
@@ -23,10 +23,9 @@ export const CompanyProductDetailsPage = () => {
   };
 
   const fetchData2 = async () => {
-    //---------------------------------------not working yet--------------------------------
-    let response = await getUserById(product.OrganizationID);
+    let response = await getUserById(OrganizationID);
     if (response.status === 200) {
-      setOrganizationDetails(response.data);
+      setOrganizationName(response.data.Name);
       //console.log(organizationDetails);
     }
   };
@@ -37,27 +36,27 @@ export const CompanyProductDetailsPage = () => {
   }, []);
 
   return (
-    <div className="productDetailsPage">
-      <div className="productDetails-info">
-        <div className="productDetails-title">
+    <div className="companyproductDetailsPage">
+      <div className="companyproductDetails-info">
+        <div className="companyproductDetails-title">
           <h1>{product.Name}</h1>
           {/* <img src={product.Image} alt={product.Name} /> */}
         </div>
-        <div className="productDetails-text">
+        <div className="companyproductDetails-text">
           <p>{product.Description}</p>
         </div>
-        <div className="productDetails-details">
+        <div className="companyproductDetails-details">
           <p>
             <br />
             Id: {product.Id}
             <br />
             Price: {product.Price}$
             <br />
-            Donated to: {organizationDetails.Name}
+            Donated to: {organizationName}
           </p>
         </div>
-        <div className="productDetails-btn">
-          <Link to="/company/products" className="link-btn">
+        <div className="companyproductDetails-btn">
+          <Link to="/company/products" className="companylink-btn">
             To Products
           </Link>
         </div>

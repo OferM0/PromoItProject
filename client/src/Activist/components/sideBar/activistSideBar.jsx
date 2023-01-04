@@ -42,7 +42,7 @@ export const ActivistSideBar = (props) => {
             </Link>
           </li>
           <li>
-            <Link to="/activist/products" className="nav-link link-dark aa">
+            <Link to="/activist/myProducts" className="nav-link link-dark aa">
               <ProductIcon />
               <span className="section-name">My Products</span>
             </Link>

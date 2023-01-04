@@ -4,7 +4,14 @@ import "./companyProduct.css";
 import { UserDetailsContext } from "../../../context/userDetails.context";
 //import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 
-export const CompanyProduct = ({ Id, Name, Description, Price, Image }) => {
+export const CompanyProduct = ({
+  OrganizationID,
+  Id,
+  Name,
+  Description,
+  Price,
+  Image,
+}) => {
   const { userDetails } = useContext(UserDetailsContext);
   return (
     <div className="product-info">
@@ -18,7 +25,7 @@ export const CompanyProduct = ({ Id, Name, Description, Price, Image }) => {
         </p>
         <Link
           to={"/company/products/" + Id}
-          state={{ Id }}
+          state={{ Id, OrganizationID }}
           className="link-btn"
         >
           More...

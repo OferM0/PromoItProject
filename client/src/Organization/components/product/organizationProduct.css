@@ -28,6 +28,17 @@
   padding-bottom: 0;
 }
 
+.orgproduct-text > h2 {
+  margin: 0 0 47px 28px;
+  font-size: 13px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #aba5a5;
+  letter-spacing: 0.2em;
+  margin-bottom: 20px !important;
+}
+
 .orgproduct-text > h1,
 .orgproduct-price-btn > p {
   font-family: "Bentham", serif;

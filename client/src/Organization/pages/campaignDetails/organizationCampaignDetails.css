@@ -1,4 +1,4 @@
-.campaignDetailsPage {
+.orgcampaignDetailsPage {
   overflow-y: hidden;
   display: flex !important;
   flex-direction: column !important;
@@ -10,7 +10,7 @@
   background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%) !important;
 }
 
-.campaignDetails-info {
+.orgcampaignDetails-info {
   margin-left: 15%;
   margin-right: 15%;
   margin-top: 10vh;
@@ -21,7 +21,7 @@
   box-shadow: rgba(46, 224, 240, 0.2) 7px 7px, rgba(46, 98, 240, 0.4) 10px 10px;
 }
 
-.campaignDetails-title > h1 {
+.orgcampaignDetails-title > h1 {
   margin: 0 0 0 28px;
   padding-top: 20px;
   font-size: 40px;
@@ -29,11 +29,11 @@
   padding-bottom: 30px;
 }
 
-.campaignDetails-title > h1 {
+.orgcampaignDetails-title > h1 {
   font-family: "Bentham", serif;
 }
-/* 
-.campaignDetails-title > h2 {
+
+/* .orgcampaignDetails-title > h2 {
   margin: 0 0 47px 28px;
   font-size: 18px;
   font-family: "Raleway", sans-serif;
@@ -43,7 +43,7 @@
   letter-spacing: 0.2em;
   margin-bottom: 20px !important;
 } */
-.campaignDetails-details-text > p {
+.orgcampaignDetails-details-text > p {
   height: 180px;
   margin-top: 0;
   font-family: "Playfair Display", serif;
@@ -55,12 +55,12 @@
   width: 500px;
 }
 
-.campaignDetails-details {
+.orgcampaignDetails-details {
   margin-top: 0;
   margin-left: 28px;
 }
 
-.campaignDetails-details > p {
+.orgcampaignDetails-details > p {
   height: 100px;
   text-align: left;
   margin-left: -20px;
@@ -70,7 +70,7 @@
   font-weight: 100;
 }
 
-.campaignDetails-btn1 .link-btn1 {
+.orgcampaignDetails-btn1 .orglink-btn1 {
   position: relative;
   float: right;
   height: 50px;
@@ -90,11 +90,11 @@
   padding-top: 4px;
 }
 
-.campaignDetails-btn1 .link-btn1:hover {
+.orgcampaignDetails-btn1 .orglink-btn1:hover {
   background-color: #79b0a1;
 }
 
-.campaignDetails-btn2 .link-btn2 {
+.orgcampaignDetails-btn2 .orglink-btn2 {
   position: relative;
   float: right;
   height: 50px;
@@ -114,11 +114,11 @@
   padding-top: 4px;
 }
 
-.campaignDetails-btn2 .link-btn2:hover {
+.orgcampaignDetails-btn2 .orglink-btn2:hover {
   background-color: #5d70ad !important;
 }
 
-.campaignDetails-btn3 .link-btn3 {
+.orgcampaignDetails-btn3 .orglink-btn3 {
   position: relative;
   float: right;
   height: 50px;
@@ -138,11 +138,11 @@
   padding-top: 4px;
 }
 
-.campaignDetails-btn3 .link-btn3:hover {
+.orgcampaignDetails-btn3 .orglink-btn3:hover {
   background-color: #ad5d69 !important;
 }
 
-.campaignDetails-btn4 .link-btn4 {
+.orgcampaignDetails-btn4 .orglink-btn4 {
   position: relative;
   float: right;
   height: 50px;
@@ -162,6 +162,6 @@
   padding-top: 4px;
 }
 
-.campaignDetails-btn4 .link-btn4:hover {
+.orgcampaignDetails-btn4 .orglink-btn4:hover {
   background-color: #bbd2c5 !important;
 }

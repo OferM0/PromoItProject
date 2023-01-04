@@ -1,0 +1,178 @@
+.productsPage {
+  overflow-y: hidden;
+  flex-direction: column !important;
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: 100vh !important;
+  flex-wrap: wrap !important;
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%) !important;
+}
+
+.managertbl-h1 {
+  font-size: 35px;
+  color: #fff;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+  margin-top: -40px !important;
+}
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+.tbl-header {
+  margin-top: 30px;
+  background: linear-gradient(to right, #ee5a6f, #f29263);
+  opacity: 0.9;
+}
+.tbl-content {
+  height: 450px;
+  overflow-x: auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(to right, #ee5a6f, #f29263);
+  opacity: 0.8;
+}
+
+.managerth {
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 15px;
+  color: #13547a;
+  text-transform: uppercase;
+}
+.managertd {
+  padding: 15px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 400;
+  font-size: 13px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+section {
+  margin: 50px;
+}
+
+/* .wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+} */
+
+.wrapper {
+  margin-top: 10px;
+  margin-left: 26%;
+  display: inline-flex;
+  background: #fff;
+  height: 60px;
+  width: 600px;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  padding: 15px 10px;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+}
+.wrapper .option {
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 10px;
+  border: 2px solid lightgrey;
+  transition: all 0.3s ease;
+}
+.wrapper .option .dot {
+  height: 20px;
+  width: 20px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+}
+.wrapper .option .dot::before {
+  position: absolute;
+  content: "";
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background: #13547a;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+}
+input[type="radio"] {
+  display: none;
+}
+#Non-Profit-Organization:checked:checked ~ .Non-Profit-Organization,
+#Company:checked:checked ~ .Company,
+#Social-Activist:checked:checked ~ .Social-Activist {
+  border-color: linear-gradient(to right, #ee5a6f, #f29263);
+  background: linear-gradient(to right, #ee5a6f, #f29263);
+}
+#Non-Profit-Organization:checked:checked ~ .Non-Profit-Organization .dot,
+#Company:checked:checked ~ .Company .dot,
+#Social-Activist:checked:checked ~ .Social-Activist .dot {
+  background: #fff;
+}
+#Non-Profit-Organization:checked:checked
+  ~ .Non-Profit-Organization
+  .dot::before,
+#Company:checked:checked ~ .Company .dot::before,
+#Social-Activist:checked:checked ~ .Social-Activist .dot::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.wrapper .option span {
+  font-size: 20px;
+  color: #808080;
+}
+#Non-Profit-Organization:checked:checked ~ .Non-Profit-Organization span,
+#Company:checked:checked ~ .Company span,
+#Social-Activist:checked:checked ~ .Social-Activist span {
+  color: #fff;
+}
+
+/* ::-webkit-scrollbar:vertical {
+  width: 6px;
+}
+::-webkit-scrollbar-track:vertical {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb:vertical {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+} 
+*/
+.deleteUser {
+  height: 40px;
+  width: 90px;
+  box-shadow: inset 0px 1px 0px 0px #dcecfb;
+  background: linear-gradient(to bottom, #facabd 5%, #ea8280 100%);
+  border-radius: 10px;
+  border: 1px solid #f38484;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #cc5252;
+}
+.deleteUser:hover {
+  background: linear-gradient(to bottom, #bc422d 5%, #d97d7d 100%);
+}
+.deleteUser:active {
+  position: relative;
+  top: 5px;
+}

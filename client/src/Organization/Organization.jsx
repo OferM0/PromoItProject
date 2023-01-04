@@ -5,10 +5,7 @@ import {
   ProductsPage,
   HomePage,
   NotFoundPage,
-  ProductDetailsPage,
-  ProfileEditPage,
 } from "../pages";
-import ProfilePage from "../pages/profile/profile.page";
 import { Route, Routes } from "react-router-dom";
 import React, { useState } from "react";
 import { OrganizationSideBar } from "./components/sideBar/organizationSideBar";
@@ -30,10 +27,6 @@ function Organization() {
         <Route path="/about" element={<AboutPage />}></Route>
         <Route path="/contacts" element={<ContactsPage />}></Route>
         <Route path="/products" element={<ProductsPage />}></Route>
-        <Route
-          path="/products/:productID"
-          element={<ProductDetailsPage />}
-        ></Route>
         <Route
           path="/organization/campaigns"
           element={<OrganizationCampaignsPage />}

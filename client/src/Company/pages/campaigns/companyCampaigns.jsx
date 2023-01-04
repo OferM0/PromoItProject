@@ -22,10 +22,11 @@ export const CompanyCampaignsPage = (props) => {
   return (
     <div className="campaignsPage">
       {campaignsArr.map((campaign) => {
-        let { Id, Name, Description, Hashtag, Url } = campaign;
+        let { OrganizationID, Id, Name, Description, Hashtag, Url } = campaign;
 
         return (
           <CompanyCampaign
+            OrganizationID={OrganizationID}
             Id={Id}
             Name={Name}
             Description={Description}

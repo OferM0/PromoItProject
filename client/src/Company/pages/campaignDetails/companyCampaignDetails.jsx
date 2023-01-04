@@ -10,7 +10,7 @@ export const CompanyCampaignDetailsPage = () => {
   const [campaign, setCampaign] = useState({});
   let { OrganizationID } = campaign;
   const location = useLocation();
-  const { Id } = location.state;
+  const { Id, OrganizationName } = location.state;
 
   const fetchData = async () => {
     let response = await getCampaignById(Id);
@@ -38,6 +38,7 @@ export const CompanyCampaignDetailsPage = () => {
       <div className="campaignDetails-info">
         <div className="campaignDetails-title">
           <h1>{campaign.Name}</h1>
+          <h2>By {OrganizationName}</h2>
         </div>
         <div className="campaignDetails-details-text">
           <p>{campaign.Description}</p>

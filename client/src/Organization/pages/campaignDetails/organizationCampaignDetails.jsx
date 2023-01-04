@@ -39,15 +39,15 @@ export const OrganizationCampaignDetailsPage = () => {
   }, []);
 
   return (
-    <div className="campaignDetailsPage">
-      <div className="campaignDetails-info">
-        <div className="campaignDetails-title">
+    <div className="orgcampaignDetailsPage">
+      <div className="orgcampaignDetails-info">
+        <div className="orgcampaignDetails-title">
           <h1>{campaign.Name}</h1>
         </div>
-        <div className="campaignDetails-details-text">
+        <div className="orgcampaignDetails-details-text">
           <p>{campaign.Description}</p>
         </div>
-        <div className="campaignDetails-details">
+        <div className="orgcampaignDetails-details">
           <p>
             <br />
             Id: {campaign.Id}
@@ -68,23 +68,23 @@ export const OrganizationCampaignDetailsPage = () => {
             $
           </p>
         </div>
-        <div className="campaignDetails-btn1">
-          <Link to="/organization/campaigns" className="link-btn1">
+        <div className="orgcampaignDetails-btn1">
+          <Link to="/organization/campaigns" className="orglink-btn1">
             To Campaigns
           </Link>
         </div>
-        <div className="campaignDetails-btn2">
+        <div className="orgcampaignDetails-btn2">
           <Link
             to={"/organization/campaigns/" + campaign.Id + "/edit"}
-            className="link-btn2"
+            className="orglink-btn2"
             state={{ Id }}
           >
             Edit
           </Link>
         </div>
-        <div className="campaignDetails-btn3">
+        <div className="orgcampaignDetails-btn3">
           <Link
-            className="link-btn3"
+            className="orglink-btn3"
             // onClick={() => {
             //   handleRemove(); /// not working ---------------------------
             // }}
@@ -93,9 +93,9 @@ export const OrganizationCampaignDetailsPage = () => {
             Delete
           </Link>
         </div>
-        <div className="campaignDetails-btn4">
+        <div className="orgcampaignDetails-btn4">
           <Link
-            className="link-btn4"
+            className="orglink-btn4"
             to={`/organization/campaigns/${Id}/products`}
             state={{ Id }}
           >

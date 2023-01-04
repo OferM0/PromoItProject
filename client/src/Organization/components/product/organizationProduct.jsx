@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./organizationProduct.css";
 //import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import { UserDetailsContext } from "../../../context/userDetails.context";
+import { getUserById } from "../../../services/user.service";
 
 export const OrganizationProduct = ({
+  CompanyID,
   CampaignID,
   Id,
   Name,
@@ -13,11 +15,22 @@ export const OrganizationProduct = ({
   Image,
 }) => {
   const { userDetails } = useContext(UserDetailsContext);
+  const [CompanyName, SetCompanyName] = useState("");
+  const fetchData = async () => {
+    let response = await getUserById(CompanyID);
+    if (response.status === 200) {
+      SetCompanyName(response.data.Name);
+    }
+  };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div className="orgproduct-info">
       <div className="orgproduct-text">
         <h1>{Name}</h1>
+        <h2>By {CompanyName}</h2>
         {/* <img src={Image} alt={Name} /> */}
         <p>{Description}</p>
       </div>

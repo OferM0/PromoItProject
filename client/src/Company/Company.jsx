@@ -10,6 +10,7 @@ import { CompanyCampaignDetailsPage } from "./pages/campaignDetails/companyCampa
 import { CompanyDonateProduct } from "./pages/donateProduct/companyDonateProduct";
 import { CompanyProductsPage } from "./pages/products/companyProducts";
 import { CompanyProductDetailsPage } from "./pages/productDetails/companyProductDetails";
+import { CompanyUsersPage } from "./pages/users/companyUsers";
 
 function Company() {
   return (
@@ -39,6 +40,7 @@ function Company() {
           path="/company/products/:ID"
           element={<CompanyProductDetailsPage />}
         ></Route>
+        <Route path="/company/users" element={<CompanyUsersPage />}></Route>
         <Route path="/companyProfile" element={<CompanyProfilePage />}></Route>
         <Route
           path="/companyProfile/edit"

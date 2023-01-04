@@ -26,23 +26,23 @@
   padding-top: 20px;
   font-size: 40px;
   color: #474747;
-  padding-bottom: 30px;
+  padding-bottom: 10px !important;
 }
 
 .campaignDetails-title > h1 {
   font-family: "Bentham", serif;
 }
-/* 
+
 .campaignDetails-title > h2 {
-  margin: 0 0 47px 28px;
-  font-size: 18px;
+  margin: 0 0 0 28px;
+  font-size: 16px;
   font-family: "Raleway", sans-serif;
   font-weight: 400;
   text-transform: uppercase;
-  color: #d2d2d2;
+  color: #a5a2a2;
   letter-spacing: 0.2em;
   margin-bottom: 20px !important;
-} */
+}
 .campaignDetails-details-text > p {
   height: 180px;
   margin-top: 0;
@@ -74,7 +74,7 @@
   position: relative;
   float: right;
   height: 50px;
-  margin-top: 90px;
+  margin-top: 70px !important;
   margin-right: 40px;
   border-radius: 60px;
   font-family: "Raleway", sans-serif;
@@ -98,7 +98,7 @@
   position: relative;
   float: right;
   height: 50px;
-  margin-top: 90px;
+  margin-top: 70px !important;
   width: 100px !important;
   margin-right: 30px;
   border-radius: 40px;
@@ -122,7 +122,7 @@
   position: relative;
   float: right;
   height: 50px;
-  margin-top: 90px;
+  margin-top: 70px !important;
   width: 100px !important;
   margin-right: 30px;
   border-radius: 40px;
@@ -146,7 +146,7 @@
   position: relative;
   float: right;
   height: 50px;
-  margin-top: 90px;
+  margin-top: 70px !important;
   width: 110px !important;
   margin-right: 320px;
   border-radius: 40px;

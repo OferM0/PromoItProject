@@ -22,9 +22,10 @@ export const CompanyProductsPage = (props) => {
     <div className="productsPage">
       {productsArr.map((product) => {
         if (product.CompanyID === user.sub) {
-          let { Id, Name, Description, Price } = product;
+          let { OrganizationID, Id, Name, Description, Price } = product;
           return (
             <CompanyProduct
+              OrganizationID={OrganizationID}
               Id={Id}
               Name={Name}
               Description={Description}
