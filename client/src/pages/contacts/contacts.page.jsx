@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./style.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { addContactDetails } from "../../services/contact.service";
+import { UserDetailsContext } from "../../context/userDetails.context";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const showToastMessage = () => {
-  toast.success("🦄 We recived your message!", {
+  toast.success("We recived your message!", {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
@@ -19,7 +21,7 @@ const showToastMessage = () => {
 };
 
 const showWarningMessage = () => {
-  toast.error("🦄 Please check all fields not empty!", {
+  toast.error("Please check all fields not empty!", {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
@@ -32,18 +34,23 @@ const showWarningMessage = () => {
 };
 
 export const ContactsPage = (props) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const { userDetails } = useContext(UserDetailsContext);
+  const { user } = useAuth0();
+  const [name, setName] = useState(userDetails.Name || "");
+  const [email, setEmail] = useState(user.email);
+  const [phone, setPhone] = useState(userDetails.Phone || "");
   const [message, setMessage] = useState("");
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [phone, setPhone] = useState("");
 
   const handleSubmit = async () => {
     let details = { Name: name, Email: email, Phone: phone, Message: message };
     await addContactDetails(details);
     //console.log(details);
-    setName("");
-    setEmail("");
-    setPhone("");
+    setName(userDetails.Name || "");
+    setEmail(user.Email);
+    setPhone(userDetails.Phone || "");
     setMessage("");
   };
 
@@ -58,6 +65,7 @@ export const ContactsPage = (props) => {
                 type="text"
                 className="form-control form-control-contact"
                 name="name"
+                maxLength="30"
                 id="name"
                 placeholder="Name"
                 onChange={(e) => {
@@ -74,6 +82,7 @@ export const ContactsPage = (props) => {
                 className="form-control form-control-contact"
                 name="email"
                 id="email"
+                maxLength="50"
                 placeholder="Email"
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -89,6 +98,7 @@ export const ContactsPage = (props) => {
                 className="form-control form-control-contact"
                 name="phone"
                 id="phone"
+                maxLength="10"
                 placeholder="Phone"
                 onChange={(e) => {
                   setPhone(e.target.value);
@@ -103,6 +113,7 @@ export const ContactsPage = (props) => {
                 name="message"
                 className="form-control form-control-contact"
                 id="message"
+                maxLength="300"
                 cols="30"
                 rows="8"
                 placeholder="Message"

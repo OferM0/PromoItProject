@@ -10,6 +10,8 @@ import { getProducts } from "../../../services/product.service";
 export const OrganizationProfilePage = (props) => {
   const [campaignsArr, setCampaignsArr] = useState([]);
   const [productsArr, setProductsArr] = useState([]);
+  const { user } = useAuth0();
+  const { userDetails } = useContext(UserDetailsContext);
 
   const fetchData = async () => {
     let response = await getCampaigns();
@@ -30,9 +32,6 @@ export const OrganizationProfilePage = (props) => {
     fetchData2();
   }, []);
 
-  const { user } = useAuth0();
-  const { userDetails } = useContext(UserDetailsContext);
-  //console.log(userDetails);
   return (
     <div className="profilePage">
       <div className="row container d-flex justify-content-center profilePanel">

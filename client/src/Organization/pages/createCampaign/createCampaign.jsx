@@ -65,6 +65,7 @@ export const CreateCampaign = () => {
             type="text"
             className="form-control"
             placeholder="Name"
+            maxLength="40"
             onChange={(e) => {
               setName(e.target.value);
             }}
@@ -91,7 +92,7 @@ export const CreateCampaign = () => {
           />
           <input
             type="text"
-            maxLength="30"
+            maxLength="20"
             className="form-control"
             placeholder="Hashtag"
             onChange={(e) => {

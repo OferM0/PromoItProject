@@ -57,8 +57,12 @@ export const ActivistCampaignDetailsPage = () => {
             <br />
             Hashtag: #{campaign.Hashtag}
             <br />
-            Connected Products:{" "}
-            {productsArr.filter((obj) => obj.CampaignID === campaign.Id).length}
+            Available Products:{" "}
+            {
+              productsArr.filter(
+                (obj) => obj.CampaignID === campaign.Id && obj.ActivistID === ""
+              ).length
+            }
             <br />
             Donation Until Now:{" "}
             {productsArr
@@ -75,9 +79,13 @@ export const ActivistCampaignDetailsPage = () => {
           </Link>
         </div>
         <div className="campaignDetails-btn2">
-          <Link to="" className="link-btn2">
-            Share
-          </Link>
+          <a
+            className="link-btn2"
+            href={`https://twitter.com/intent/tweet?text=Please%20donate%20to%20${campaign.Name}%20campaign%20%23${campaign.Hashtag}%20${campaign.Url}`}
+            target="_blank"
+          >
+            Tweet
+          </a>
         </div>
         <div className="activistCampaignDetails-btn4">
           <Link

@@ -22,7 +22,10 @@ export const ActivistMyProductsPage = (props) => {
   return (
     <div className="productsPage">
       {productsArr.map((product) => {
-        if (product.ActivistID === user.sub) {
+        if (
+          product.ActivistID === user.sub &&
+          product.DonatedByActivist === false
+        ) {
           let { CompanyID, Id, Name, Description, Price } = product;
           return (
             <ActivistProduct

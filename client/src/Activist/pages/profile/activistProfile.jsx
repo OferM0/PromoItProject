@@ -10,6 +10,11 @@ import {
   getTweetsByUser,
   getRetweetsOfUser,
 } from "../../../services/twitter.service";
+import {
+  updateUserById,
+  gerUserById,
+  getUserById,
+} from "../../../services/user.service";
 //import { getTweets } from "../../../services/twitter.service";
 //import { getUserTweet } from "../../../services/twitter.service";
 //import { Client } from "twitter-api-sdk";
@@ -51,13 +56,13 @@ import {
 export const ActivistProfilePage = (props) => {
   const [productsArr, setProductsArr] = useState([]);
   const [campaignsArr, setCampaignsArr] = useState([]);
-  const [tweetsArr, setTweetsArr] = useState([]);
-  const [retweetsArr, setRetweetsArr] = useState([]);
+  const [userD, setUserD] = useState([]);
   const { user } = useAuth0();
-  const { userDetails } = useContext(UserDetailsContext);
-  //console.log(userDetails);
-  const [status, setStatus] = useState(0);
-  //let status = 0;
+  const { userDetails, setUserDetails } = useContext(UserDetailsContext);
+  const [tweets, setTweets] = useState(0);
+  const [retweets, setRetweets] = useState(0);
+  //const [status, setStatus] = useState(0);
+
   const fetchData = async () => {
     let response = await getProducts();
     if (response.status === 200) {
@@ -72,53 +77,76 @@ export const ActivistProfilePage = (props) => {
     }
   };
 
-  // const fetchData3 = async (username, hashtag) => {
-  //   let response = await getTweetsByUser(username, hashtag);
+  // const getTweets = async (Hashtag) => {
+  //   let sum = 0;
+  //   let response = await getTweetsByUser(userDetails.TwitterHandle, Hashtag);
   //   if (response.status === 200) {
-  //     setTweetsArr(Object.values(response.data));
+  //     //console.log(response.data.meta.result_count);
+  //     sum = sum + response.data.meta.result_count;
+  //   }
+  //   //setTweets(sum);
+  //   return sum;
+  // };
+
+  // const getRetweets = async (Hashtag) => {
+  //   let sum = 0;
+  //   let response = await getRetweetsOfUser(userDetails.TwitterHandle, Hashtag);
+  //   if (response.status === 200) {
+  //     //console.log(response.data.meta.result_count);
+  //     sum = sum + response.data.meta.result_count;
+  //   }
+  //   //setRetweets(sum);
+  //   return sum;
+  // };
+
+  // const calculateStatus = async () => {
+  //   let sum1 = 0;
+  //   let sum2 = 0;
+  //   for (let i = 0; i < campaignsArr.length; i++) {
+  //     //console.log(campaignsArr[i].Hashtag);
+  //     sum1 = sum1 + (await getTweets(campaignsArr[i].Hashtag));
+  //     sum2 = sum2 + (await getRetweets(campaignsArr[i].Hashtag));
+  //   }
+  //   setTweets(sum1);
+  //   setRetweets(sum2);
+  //   //setStatus(sum);
+  //   let details = {
+  //     Name: userDetails.Name,
+  //     Address: userDetails.Address,
+  //     Phone: userDetails.Phone,
+  //     Status: parseFloat(
+  //       tweets +
+  //         retweets -
+  //         productsArr.filter((obj) => obj.ActivistID === user.sub).length
+  //     ),
+  //   };
+
+  //   if (
+  //     userDetails.Status !==
+  //     tweets +
+  //       retweets -
+  //       productsArr.filter((obj) => obj.ActivistID === user.sub).length
+  //   ) {
+  //     await updateUserById(user.sub, details);
+  //     console.log("status changed to", userDetails.Status);
   //   }
   // };
 
-  // const fetchData4 = async (username, hashtag) => {
-  //   let response = await getRetweetsOfUser(username, hashtag);
+  // const fetchData3 = async () => {
+  //   let response = await getUserById(user.sub);
   //   if (response.status === 200) {
-  //     setRetweetsArr(Object.values(response.data));
+  //     setUserD(response.data);
+  //     console.log(userD.Status);
   //   }
   // };
-  //const fetchData3 = async () => {
-  //let response = await getTweets();
-  //console.log(response);
-  // if (response.status === 200) {
-  //   setTweetsArr(Object.values(response.data));
-  //   console.log(tweetsArr);
-  // }
-  //};
-  const calculateStatus = async () => {
-    let sum = 0;
-    for (let i = 0; i < campaignsArr.length; i++) {
-      let response = await getTweetsByUser("Ofermord", campaignsArr[i].Hashtag);
-      if (response.status === 200) {
-        setTweetsArr(Object.values(response.data));
-      }
-      let response2 = await getRetweetsOfUser(
-        "Ofermord",
-        campaignsArr[i].Hashtag
-      );
-      if (response2.status === 200) {
-        setRetweetsArr(Object.values(response2.data));
-      }
-      //console.log(campaignsArr[i].Hashtag);
-      sum = sum + retweetsArr.length + tweetsArr.length;
-    }
-    setStatus(sum);
-  };
 
   useEffect(() => {
     fetchData();
     fetchData2();
+    //getTweets();
+    //getRetweets();
+    //calculateStatus();
     //fetchData3();
-    //fetchData4();
-    calculateStatus();
   }, []);
 
   return (
@@ -138,7 +166,16 @@ export const ActivistProfilePage = (props) => {
                   </div>
                   <h6 className="profileName">{userDetails.Name}</h6>
                   <h6>{userDetails.Role}</h6>
-                  <div className="moneyStatus">Status: {status} $</div>
+                  <div className="moneyStatus">
+                    Status:{" "}
+                    {
+                      /* {tweets +
+                      retweets -
+                      productsArr.filter((obj) => obj.ActivistID === user.sub)
+                        .length*/ userDetails.Status
+                    }{" "}
+                    $
+                  </div>
                   <Link to="/activistProfile/edit" className="editBtn">
                     <span>Edit Profile</span>
                     <EditIcon />

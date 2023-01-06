@@ -4,14 +4,30 @@ import "./activistProduct.css";
 //import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import { UserDetailsContext } from "../../../context/userDetails.context";
 import { updateProductById } from "../../../services/product.service";
-import { getProductById } from "../../../services/product.service";
+import { getProductById, addProduct } from "../../../services/product.service";
 import { useAuth0 } from "@auth0/auth0-react";
 import { ToastContainer, toast } from "react-toastify";
-import { getUserById } from "../../../services/user.service";
+import { getUserById, updateUserById } from "../../../services/user.service";
 
 const showToastMessage = () => {
   toast.success(
     "Congratulations! you promoted the society and also purchased nice product. We will inform the company to suplly your product.",
+    {
+      position: "top-left",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    }
+  );
+};
+
+const showErrorMessage = () => {
+  toast.error(
+    "You dont have enough money! you can keep promot campaigns to earn money and then come back.",
     {
       position: "top-left",
       autoClose: 4000,
@@ -99,34 +115,44 @@ export const ActivistProduct = ({
         <p>
           <span>{Price}</span>$
         </p>
-        {product.ActivistID !== user.sub ? (
-          <button
-            // to={`/activist/campaigns/${CampaignID}/products/${Id}`}
-            // state={{ CampaignID, Id }}
-            className="link-btn"
-            onClick={async () => {
-              showToastMessage();
-              showActivistInfo();
-              product.ActivistID = user.sub;
-              //console.log(product);
-              await updateProductById(Id, product);
-            }}
-          >
-            Buy
-          </button>
-        ) : (
-          <button
-            className="link-btn"
-            onClick={async () => {
-              showDonateMessage();
-              product.DonatedByActivist = true;
-              //product.ActivistID = "";
-              await updateProductById(Id, product);
-            }}
-          >
-            Donate
-          </button>
-        )}
+        <>
+          {product.ActivistID !== user.sub ? (
+            <button
+              // to={`/activist/campaigns/${CampaignID}/products/${Id}`}
+              // state={{ CampaignID, Id }}
+              className="link-btn"
+              onClick={async () => {
+                if (userDetails.Status > product.Price) {
+                  showToastMessage();
+                  showActivistInfo();
+                  product.ActivistID = user.sub;
+                  //console.log(product);
+                  await updateProductById(Id, product);
+                } else {
+                  showErrorMessage();
+                }
+              }}
+            >
+              Buy
+            </button>
+          ) : product.Shipped === false ? (
+            <button
+              className="link-btn"
+              onClick={async () => {
+                showDonateMessage();
+                product.DonatedByActivist = true;
+                await updateProductById(Id, product);
+                product.ActivistID = "";
+                product.DonatedByActivist = false;
+                await addProduct(product);
+              }}
+            >
+              Donate
+            </button>
+          ) : (
+            <></>
+          )}
+        </>
 
         <ToastContainer />
       </div>

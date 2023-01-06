@@ -4,6 +4,7 @@ import { getProducts } from "../../../services/product.service";
 import "./companyUsers.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getUserById } from "../../../services/user.service";
+import { updateProductById } from "../../../services/product.service";
 
 export const CompanyUsersPage = (props) => {
   const [productsArr, setProductsArr] = useState([]);
@@ -44,7 +45,8 @@ export const CompanyUsersPage = (props) => {
                 if (
                   product.CompanyID === user.sub &&
                   product.ActivistID !== "" &&
-                  product.DonatedByActivist === false
+                  product.DonatedByActivist === false &&
+                  product.Shipped === false
                 ) {
                   let { Id, ActivistID } = product;
 
@@ -53,6 +55,8 @@ export const CompanyUsersPage = (props) => {
                       <td className="companytd">{Id}</td>
                       <CompanyUserDetails
                         activistId={ActivistID}
+                        Id={Id}
+                        product={product}
                       ></CompanyUserDetails>
                     </tr>
                   );
@@ -66,7 +70,7 @@ export const CompanyUsersPage = (props) => {
   );
 };
 
-export const CompanyUserDetails = ({ activistId }) => {
+export const CompanyUserDetails = ({ activistId, Id, product }) => {
   const [activistDetails, setActivistDetails] = useState({});
   console.log(activistId);
   const fetchData2 = async () => {
@@ -87,7 +91,16 @@ export const CompanyUserDetails = ({ activistId }) => {
       <td className="companytd">{Address}</td>
       <td className="companytd">{Phone}</td>
       <td className="companytd">
-        <button className="complitOrder">complete</button>
+        <button
+          className="complitOrder"
+          onClick={async () => {
+            product.Shipped = true;
+            //console.log(product);
+            await updateProductById(Id, product);
+          }}
+        >
+          complete
+        </button>
       </td>
     </>
   );

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./editCampaign.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import ReturnIcon from "@mui/icons-material/KeyboardReturn";
 import { updateCampaignById } from "../../../services/campaign.service";
-// import { getCampaignById } from "../../../services/campaign.service";
+import { getCampaignById } from "../../../services/campaign.service";
 
 const showToastMessage = () => {
   toast.success("New Campaign Created succsufully!", {
@@ -34,23 +34,16 @@ const showWarningMessage = () => {
 };
 
 export const EditCampaign = () => {
-  // const [campaign, setCampaign] = useState({});
+  const [campaign, setCampaign] = useState([]);
   const location = useLocation();
   const { Id } = location.state;
-
-  // const fetchData = async () => {
-  //   let response = await getCampaignById(Id);
-  //   if (response.status === 200) {
-  //     setCampaign(response.data);
-  //     //console.log(campaign);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
-  //let { Name, Description, Hashtag, Url } = campaign;
+  const fetchData = async () => {
+    let response = await getCampaignById(Id);
+    if (response.status === 200) {
+      setCampaign(response.data);
+    }
+  };
+  //let { Name, cDescription, cHashtag, cUrl } = campaign;
 
   const [name, setName] = useState(""); // useState(campaign.Name) not working should work
   const [description, setDescription] = useState(""); //useState(campaign.Description) not working should work
@@ -66,22 +59,36 @@ export const EditCampaign = () => {
       Hashtag: hashtag,
     };
     await updateCampaignById(Id, details);
-    setName("");
-    setDescription("");
-    setHashtag("");
-    setUrl("");
+    setName(name);
+    setDescription(description);
+    setHashtag(url);
+    setUrl(hashtag);
     //console.log(details);
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="campaignEditPage">
-      <div className="campaignEditPanel">
+      <div
+        className="campaignEditPanel"
+        onMouseEnter={() => {
+          // --------------------------some dirty code for it to work (valued imported to input fields)------------
+          setName(campaign.Name);
+          setDescription(campaign.Description);
+          setHashtag(campaign.Hashtag);
+          setUrl(campaign.Url);
+        }}
+      >
         <h3 className="campaignEditTitle">Edit Campaign</h3>
         <div className="col-md-6">
           <input
             type="text"
             className="form-control"
-            placeholder="Full Name"
+            placeholder="Name"
+            maxLength="40"
             onChange={(e) => {
               setName(e.target.value);
             }}
@@ -108,7 +115,7 @@ export const EditCampaign = () => {
           />
           <input
             type="text"
-            maxLength="30"
+            maxLength="20"
             className="form-control"
             placeholder="Hashtag"
             onChange={(e) => {

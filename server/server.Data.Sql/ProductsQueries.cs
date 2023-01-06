@@ -26,6 +26,7 @@ namespace server.Data.Sql
                 product.OrganizationID = reader.GetString(reader.GetOrdinal("OrganizationID"));
                 product.CampaignID = reader.GetInt32(reader.GetOrdinal("CampaignID"));
                 product.DonatedByActivist = reader.GetBoolean(reader.GetOrdinal("DonatedByActivist"));
+                product.Shipped = reader.GetBoolean(reader.GetOrdinal("Shipped"));
                 productsList.Add(product);
             }
             return productsList;
@@ -45,6 +46,7 @@ namespace server.Data.Sql
                 product.OrganizationID = reader.GetString(reader.GetOrdinal("OrganizationID"));
                 product.CampaignID = reader.GetInt32(reader.GetOrdinal("CampaignID"));
                 product.DonatedByActivist = reader.GetBoolean(reader.GetOrdinal("DonatedByActivist"));
+                product.Shipped = reader.GetBoolean(reader.GetOrdinal("Shipped"));
             }
             return product;
         }
@@ -61,11 +63,11 @@ namespace server.Data.Sql
             }
         }
 
-        public void InsertProductToDB(string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist)
+        public void InsertProductToDB(string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist, bool Shipped)
         {
             try
             {
-                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Products(Name, Description, Price,ActivistID,CompanyID,OrganizationID,CampaignID,DonatedByActivist) Values('{Name}','{Description}','{Price}','{ActivistID}','{CompanyID}','{OrganizationID}','{CampaignID}','{DonatedByActivist}')");
+                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Products(Name, Description, Price,ActivistID,CompanyID,OrganizationID,CampaignID,DonatedByActivist, Shipped) Values('{Name}','{Description}','{Price}','{ActivistID}','{CompanyID}','{OrganizationID}','{CampaignID}','{DonatedByActivist}','{Shipped}')");
             }
             catch (Exception ex)
             {
@@ -96,11 +98,11 @@ namespace server.Data.Sql
             }
         }
 
-        public void UpdateProductInDB(string Id, string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist)
+        public void UpdateProductInDB(string Id, string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist, bool Shipped)
         {
             try
             {
-                DAL.SqlQuery.RunNonQueryCommand($"Update Products set Name='{Name}' , Description='{Description}' , Price='{Price}', ActivistID='{ActivistID}' , CompanyID='{CompanyID}' , OrganizationID='{OrganizationID}' , CampaignID='{CampaignID}' , DonatedByActivist='{DonatedByActivist}' where Id= '{Id}'");
+                DAL.SqlQuery.RunNonQueryCommand($"Update Products set Name='{Name}' , Description='{Description}' , Price='{Price}', ActivistID='{ActivistID}' , CompanyID='{CompanyID}' , OrganizationID='{OrganizationID}' , CampaignID='{CampaignID}' , DonatedByActivist='{DonatedByActivist}' , Shipped='{Shipped}' where Id= '{Id}'");
             }
             catch (Exception ex)
             {

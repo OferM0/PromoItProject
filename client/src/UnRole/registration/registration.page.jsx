@@ -83,6 +83,7 @@ const showCompanyInfo = () => {
 };
 export const RegistrationPage = () => {
   const [roleText, setRoleText] = useState("Non-Profit Organization");
+  const [twitterHandle, setTwitterHandle] = useState("");
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
@@ -125,18 +126,36 @@ export const RegistrationPage = () => {
       setPhone("");
       setUrl("");
       //console.log(details);
-    } else {
+    } else if (roleText === "Social Activist") {
       let details = {
         UserID: user.sub,
         Role: roleText,
         Name: name,
         Address: address,
         Phone: phone,
+        Status: 0,
+        TwitterHandle: twitterHandle,
       };
       await addUserDetails(details);
       setName("");
       setAddress("");
       setPhone("");
+      setTwitterHandle("");
+      //console.log(details);
+    } else if (roleText === "Company") {
+      let details = {
+        UserID: user.sub,
+        Role: roleText,
+        Name: name,
+        Address: address,
+        Phone: phone,
+        TwitterHandle: twitterHandle,
+      };
+      await addUserDetails(details);
+      setName("");
+      setAddress("");
+      setPhone("");
+      setTwitterHandle("");
       //console.log(details);
     }
   };
@@ -160,7 +179,7 @@ export const RegistrationPage = () => {
 
             <div
               onChange={(event) => handleRoleChange(event)}
-              className="radioContainer"
+              className="radioContainer1"
             >
               <input
                 type="radio"
@@ -205,10 +224,25 @@ export const RegistrationPage = () => {
                 <h3 className="register-heading">Apply as a {roleText}</h3>
                 <div className="row register-form">
                   <div className="col-md-6">
+                    {roleText !== "Non-Profit Organization" ? (
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Twitter Handle"
+                        maxLength="15"
+                        onChange={(e) => {
+                          setTwitterHandle(e.target.value);
+                        }}
+                        value={twitterHandle}
+                      />
+                    ) : (
+                      <></>
+                    )}
                     <input
                       type="text"
                       className="form-control"
                       placeholder="Full Name"
+                      maxLength="30"
                       onChange={(e) => {
                         setName(e.target.value);
                       }}
@@ -218,6 +252,7 @@ export const RegistrationPage = () => {
                       type="text"
                       className="form-control"
                       placeholder="Address"
+                      maxLength="40"
                       onChange={(e) => {
                         setAddress(e.target.value);
                       }}
@@ -225,8 +260,8 @@ export const RegistrationPage = () => {
                     />
                     <input
                       type="text"
-                      minLength="8"
-                      maxLength="12"
+                      minLength="10"
+                      maxLength="10"
                       className="form-control"
                       placeholder="Phone"
                       onChange={(e) => {
@@ -237,8 +272,6 @@ export const RegistrationPage = () => {
                     {roleText === "Non-Profit Organization" ? (
                       <input
                         type="text"
-                        minLength="10"
-                        maxLength="100"
                         className="form-control"
                         placeholder="Site's Url"
                         onChange={(e) => {
@@ -257,7 +290,9 @@ export const RegistrationPage = () => {
                         name == "" ||
                         address == "" ||
                         phone == "" ||
-                        (url == "" && roleText === "Non-Profit Organization")
+                        (url == "" && roleText === "Non-Profit Organization") ||
+                        (twitterHandle == "" &&
+                          roleText !== "Non-Profit Organization")
                       ) {
                         showWarningMessage();
                       } else {

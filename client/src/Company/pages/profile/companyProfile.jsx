@@ -8,6 +8,8 @@ import { getProducts } from "../../../services/product.service";
 
 export const CompanyProfilePage = (props) => {
   const [productsArr, setProductsArr] = useState([]);
+  const { user } = useAuth0();
+  const { userDetails } = useContext(UserDetailsContext);
 
   const fetchData = async () => {
     let response = await getProducts();
@@ -20,8 +22,6 @@ export const CompanyProfilePage = (props) => {
     fetchData();
   }, []);
 
-  const { user } = useAuth0();
-  const { userDetails } = useContext(UserDetailsContext);
   //console.log(userDetails);
   return (
     <div className="profilePage">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./activistEditProfile.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -6,6 +6,7 @@ import { updateUserById } from "../../../services/user.service";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import ReturnIcon from "@mui/icons-material/KeyboardReturn";
+import { UserDetailsContext } from "../../../context/userDetails.context";
 
 const showToastMessage = () => {
   toast.success("Edited succsufully!", {
@@ -35,20 +36,26 @@ const showWarningMessage = () => {
 
 export const ActivistProfileEditPage = () => {
   const { user } = useAuth0();
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [phone, setPhone] = useState("");
+  const { userDetails } = useContext(UserDetailsContext);
+  const [name, setName] = useState(userDetails.Name);
+  const [address, setAddress] = useState(userDetails.Address);
+  const [phone, setPhone] = useState(userDetails.Phone);
 
   const handleSubmit = async () => {
     let details = {
       Name: name,
       Address: address,
       Phone: phone,
+      Status: userDetails.Status,
     };
+    userDetails.Phone = phone;
+    userDetails.Name = name;
+    userDetails.Address = address;
+
     await updateUserById(user.sub, details);
-    setName("");
-    setAddress("");
-    setPhone("");
+    setName(userDetails.Name);
+    setAddress(userDetails.Address);
+    setPhone(userDetails.Phone);
     //console.log(details);
   };
 
@@ -61,6 +68,7 @@ export const ActivistProfileEditPage = () => {
             type="text"
             className="form-control"
             placeholder="Full Name"
+            maxLength="30"
             onChange={(e) => {
               setName(e.target.value);
             }}
@@ -70,6 +78,7 @@ export const ActivistProfileEditPage = () => {
             type="text"
             className="form-control"
             placeholder="Address"
+            maxLength="40"
             onChange={(e) => {
               setAddress(e.target.value);
             }}
@@ -77,8 +86,8 @@ export const ActivistProfileEditPage = () => {
           />
           <input
             type="text"
-            minLength="8"
-            maxLength="12"
+            minLength="10"
+            maxLength="10"
             className="form-control"
             placeholder="Phone"
             onChange={(e) => {

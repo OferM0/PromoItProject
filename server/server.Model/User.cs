@@ -14,5 +14,7 @@ namespace server.Model
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Url { get; set; }
+        public decimal Status { get; set; }
+        public string TwitterHandle { get; set; }
     }
 }

@@ -23,6 +23,8 @@ namespace server.Data.Sql
                 user.Phone = reader.GetString(reader.GetOrdinal("Phone"));
                 user.Address = reader.GetString(reader.GetOrdinal("Address"));
                 user.Url = reader.GetString(reader.GetOrdinal("Url"));
+                user.Status = reader.GetDecimal(reader.GetOrdinal("Status"));
+                user.TwitterHandle = reader.GetString(reader.GetOrdinal("TwitterHandle"));
                 usersList.Add(user.UserID, user);
             }
             return usersList;
@@ -39,6 +41,8 @@ namespace server.Data.Sql
                 user.Phone = reader.GetString(reader.GetOrdinal("Phone"));
                 user.Address = reader.GetString(reader.GetOrdinal("Address"));
                 user.Url = reader.GetString(reader.GetOrdinal("Url"));
+                user.Status = reader.GetDecimal(reader.GetOrdinal("Status"));
+                user.TwitterHandle = reader.GetString(reader.GetOrdinal("TwitterHandle"));
             }
             return user;
         }
@@ -53,11 +57,11 @@ namespace server.Data.Sql
                 return null;
             }
         }
-        public void InsertUserToDB(string UserID, string Role, string Name, string Address, string Phone, string Url)
+        public void InsertUserToDB(string UserID, string Role, string Name, string Address, string Phone, string Url, decimal Status, string TwitterHandle)
         {
             try
             {
-                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Users(UserID, Role, Name, Address, Phone, Url) Values('{UserID}','{Role}','{Name}','{Address}','{Phone}','{Url}')");
+                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Users(UserID, Role, Name, Address, Phone, Url, Status, TwitterHandle) Values('{UserID}','{Role}','{Name}','{Address}','{Phone}','{Url}','{Status}','{TwitterHandle}')");
             }
             catch (Exception ex)
             {
@@ -87,11 +91,11 @@ namespace server.Data.Sql
             }
         }
 
-        public void UpdateUserInDB(string UserID, string Name, string Address, string Phone, string Url)
+        public void UpdateUserInDB(string UserID, string Name, string Address, string Phone, string Url, decimal Status)
         {
             try
             {
-                DAL.SqlQuery.RunNonQueryCommand($"Update Users set Name='{Name}' , Address='{Address}' , Phone='{Phone}' , Url='{Url}' where UserID= '{UserID}'");
+                DAL.SqlQuery.RunNonQueryCommand($"Update Users set Name='{Name}' , Address='{Address}' , Phone='{Phone}' , Url='{Url}' , Status='{Status}' where UserID= '{UserID}'");
             }
             catch (Exception ex)
             {

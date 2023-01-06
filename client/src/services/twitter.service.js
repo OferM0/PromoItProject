@@ -41,9 +41,9 @@ import axios from "axios";
 
 export const getTweetsByUser = async (User, Hashtag) => {
   try {
-    let response = await axios.get(
-      `http://localhost:7181/api/Tweets/Get/tweet/${User}/${Hashtag}`
-    );
+    const api =
+      "http://localhost:7181/api/Tweets/Get/tweet/" + User + "/" + Hashtag;
+    let response = await axios.get(api);
     return response;
   } catch (e) {
     console.log(e);

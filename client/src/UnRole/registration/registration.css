@@ -132,7 +132,7 @@
   margin-top: 25px;
 }
 
-.radioContainer {
+.radioContainer1 {
   margin: 0;
   padding: 0;
   display: flex;
@@ -141,6 +141,6 @@
   height: 100px;
 }
 
-.radioContainer input {
+.radioContainer1 input {
   margin-top: 5px;
 }

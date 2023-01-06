@@ -32,7 +32,7 @@ namespace server.MicroService
             {
                 case "Add":
                     User u = System.Text.Json.JsonSerializer.Deserialize<User>(req.Body); //convert from json to users object after post(react-axios)
-                    helper.AddNewUser(u.UserID, u.Role, u.Name, u.Address, u.Phone, u.Url); //add to DB- run sql command and to list
+                    helper.AddNewUser(u.UserID, u.Role, u.Name, u.Address, u.Phone, u.Url, u.Status, u.TwitterHandle); //add to DB- run sql command and to list
                     responseMessage = System.Text.Json.JsonSerializer.Serialize(u); //to see if the new User object updated
                     return new OkObjectResult(responseMessage);
                     break;
@@ -48,7 +48,7 @@ namespace server.MicroService
                     if (UserID != null) //update only by UserID
                     {
                         User u2 = System.Text.Json.JsonSerializer.Deserialize<User>(req.Body);
-                        helper.UpdateUserById(UserID, u2.Name, u2.Address, u2.Phone, u2.Url);
+                        helper.UpdateUserById(UserID, u2.Name, u2.Address, u2.Phone, u2.Url, u2.Status);
                         responseMessage = System.Text.Json.JsonSerializer.Serialize(u2);
                         return new OkObjectResult(responseMessage);
                     }

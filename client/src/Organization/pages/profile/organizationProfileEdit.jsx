@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./organizationEditProfile.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -6,6 +6,7 @@ import { updateUserById } from "../../../services/user.service";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import ReturnIcon from "@mui/icons-material/KeyboardReturn";
+import { UserDetailsContext } from "../../../context/userDetails.context";
 
 const showToastMessage = () => {
   toast.success("Edited succsufully!", {
@@ -35,10 +36,11 @@ const showWarningMessage = () => {
 
 export const OrganizationProfileEditPage = () => {
   const { user } = useAuth0();
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [phone, setPhone] = useState("");
-  const [url, setUrl] = useState("");
+  const { userDetails } = useContext(UserDetailsContext);
+  const [name, setName] = useState(userDetails.Name);
+  const [address, setAddress] = useState(userDetails.Address);
+  const [phone, setPhone] = useState(userDetails.Phone);
+  const [url, setUrl] = useState(userDetails.Url);
 
   const handleSubmit = async () => {
     let details = {
@@ -47,11 +49,15 @@ export const OrganizationProfileEditPage = () => {
       Phone: phone,
       Url: url,
     };
+    userDetails.Phone = phone;
+    userDetails.Name = name;
+    userDetails.Address = address;
+    userDetails.Url = url;
+
     await updateUserById(user.sub, details);
-    setName("");
-    setAddress("");
-    setPhone("");
-    setUrl("");
+    setName(userDetails.Name);
+    setAddress(userDetails.Address);
+    setPhone(userDetails.Phone);
     //console.log(details);
   };
 
@@ -64,6 +70,7 @@ export const OrganizationProfileEditPage = () => {
             type="text"
             className="form-control"
             placeholder="Full Name"
+            maxLength="30"
             onChange={(e) => {
               setName(e.target.value);
             }}
@@ -72,6 +79,7 @@ export const OrganizationProfileEditPage = () => {
           <input
             type="text"
             className="form-control"
+            maxLength="40"
             placeholder="Address"
             onChange={(e) => {
               setAddress(e.target.value);
@@ -80,8 +88,8 @@ export const OrganizationProfileEditPage = () => {
           />
           <input
             type="text"
-            minLength="8"
-            maxLength="12"
+            minLength="10"
+            maxLength="10"
             className="form-control"
             placeholder="Phone"
             onChange={(e) => {
@@ -91,8 +99,6 @@ export const OrganizationProfileEditPage = () => {
           />
           <input
             type="text"
-            minLength="10"
-            maxLength="100"
             className="form-control"
             placeholder="Site's Url"
             onChange={(e) => {

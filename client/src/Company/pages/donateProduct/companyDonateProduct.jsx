@@ -47,14 +47,14 @@ export const CompanyDonateProduct = () => {
     let details = {
       Name: name,
       Description: description,
-      Price: parseInt(price),
+      Price: parseFloat(price),
       //ActivistID: null,
       CompanyID: user.sub,
       OrganizationID: OrganizationID,
       CampaignID: Id,
       //DonatedByActivist: null,
     };
-    for (let i = 0; i < units; i++) {
+    for (let i = 0; i < parseInt(units); i++) {
       await addProduct(details);
       //console.log(details);
     }
@@ -74,6 +74,7 @@ export const CompanyDonateProduct = () => {
             type="text"
             className="form-control"
             placeholder="Name"
+            maxLength="40"
             onChange={(e) => {
               setName(e.target.value);
             }}

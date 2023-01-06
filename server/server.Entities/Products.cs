@@ -33,7 +33,7 @@ namespace server.Entities
             return product;
         }
 
-        public void AddNewProduct(string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist)
+        public void AddNewProduct(string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist, bool Shipped)
         {
             Product product = new Product
             {
@@ -44,16 +44,17 @@ namespace server.Entities
                 CompanyID = CompanyID,
                 OrganizationID = OrganizationID,
                 CampaignID = CampaignID,
-                DonatedByActivist = DonatedByActivist
+                DonatedByActivist = DonatedByActivist,
+                Shipped= Shipped
             };
             MainManager.Instance.productsList.Add(product);
 
-            productsQueries.InsertProductToDB(Name, Description, Price, ActivistID, CompanyID, OrganizationID, CampaignID, DonatedByActivist);       
+            productsQueries.InsertProductToDB(Name, Description, Price, ActivistID, CompanyID, OrganizationID, CampaignID, DonatedByActivist, Shipped);       
         }
 
-        public void UpdateProductById(string Id, string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist)
+        public void UpdateProductById(string Id, string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist, bool Shipped)
         {
-            productsQueries.UpdateProductInDB(Id, Name, Description, Price, ActivistID, CompanyID, OrganizationID, CampaignID, DonatedByActivist);
+            productsQueries.UpdateProductInDB(Id, Name, Description, Price, ActivistID, CompanyID, OrganizationID, CampaignID, DonatedByActivist, Shipped);
             //MainManager.Instance.productList[int.Parse(id)]=new Product { ProductID=int.Parse(id), Name=Name, Email=Email, Phone=Phone, Message=Message};
         }
 
