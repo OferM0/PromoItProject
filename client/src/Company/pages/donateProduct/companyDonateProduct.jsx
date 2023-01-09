@@ -6,6 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { addProduct } from "../../../services/product.service";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import ReturnIcon from "@mui/icons-material/KeyboardReturn";
+import { width } from "@mui/system";
 
 const showToastMessage = () => {
   toast.success("New Product Created succsufully!", {
@@ -40,8 +41,30 @@ export const CompanyDonateProduct = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
+  const [image, setimage] = useState("");
   const [units, setUnits] = useState("");
   const navigate = useNavigate();
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleChangeImage = async (e) => {
+    //console.log(URL.createObjectURL(e.target.files[0]));
+    const base64 = await convertToBase64(e.target.files[0]);
+    setimage(base64);
+    //setimage(URL.createObjectURL(e.target.files[0]));
+    //console.log(base64);
+  };
 
   const handleSubmit = async () => {
     let details = {
@@ -52,6 +75,7 @@ export const CompanyDonateProduct = () => {
       CompanyID: user.sub,
       OrganizationID: OrganizationID,
       CampaignID: Id,
+      Image: image,
       //DonatedByActivist: null,
     };
     for (let i = 0; i < parseInt(units); i++) {
@@ -108,6 +132,12 @@ export const CompanyDonateProduct = () => {
             }}
             value={units}
           />
+          <input
+            type="file"
+            className="form-control"
+            accept="image/*"
+            onChange={handleChangeImage}
+          ></input>
         </div>
         <div className="returnToCampaign">
           <ReturnIcon className="returnIcon" onClick={() => navigate(-1)} />
@@ -121,7 +151,8 @@ export const CompanyDonateProduct = () => {
               units === "" ||
               units === 0 ||
               price === "" ||
-              price === 0
+              price === 0 ||
+              image === ""
             ) {
               showWarningMessage();
             } else {

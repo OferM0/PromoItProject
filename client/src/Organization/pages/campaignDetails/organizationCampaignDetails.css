@@ -136,6 +136,7 @@
   cursor: pointer;
   justify-content: center;
   padding-top: 4px;
+  border-color: transparent;
 }
 
 .orgcampaignDetails-btn3 .orglink-btn3:hover {

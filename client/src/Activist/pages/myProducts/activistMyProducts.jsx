@@ -7,6 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 export const ActivistMyProductsPage = (props) => {
   const [productsArr, setProductsArr] = useState([]);
   const { user } = useAuth0();
+  let check = false; // to check if there are not connected products
 
   const fetchData = async () => {
     let response = await getProducts();
@@ -26,7 +27,8 @@ export const ActivistMyProductsPage = (props) => {
           product.ActivistID === user.sub &&
           product.DonatedByActivist === false
         ) {
-          let { CompanyID, Id, Name, Description, Price } = product;
+          check = true;
+          let { CompanyID, Id, Name, Description, Price, Image } = product;
           return (
             <ActivistProduct
               CompanyID={CompanyID}
@@ -34,11 +36,22 @@ export const ActivistMyProductsPage = (props) => {
               Name={Name}
               Description={Description}
               Price={Price}
-              // Image={Image}
+              Image={Image}
             ></ActivistProduct>
           );
         }
       })}
+      <>
+        {check === false ? (
+          <>
+            <div className="noConnectedProducts">
+              <p>You don't have any product, keep tweeting to earn points</p>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+      </>
     </div>
   );
 };

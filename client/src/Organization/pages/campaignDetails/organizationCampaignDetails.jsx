@@ -1,12 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./organizationCampaignDetails.css";
+import { ToastContainer, toast } from "react-toastify";
 //import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import {
   getCampaignById,
-  removeCampaignById,
+  updateCampaignById,
 } from "../../../services/campaign.service";
 import { getProducts } from "../../../services/product.service";
+
+const showUnActiveMessage = () => {
+  toast.error(
+    "You choosed to unactive this campaign weach means it will be hidden from companies and activists!",
+    {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    }
+  );
+};
+
+const showActiveMessage = () => {
+  toast.success(
+    "You choosed to active this campaign weach means it will be shown to companies and activists!",
+    {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    }
+  );
+};
 
 export const OrganizationCampaignDetailsPage = () => {
   const [productsArr, setProductsArr] = useState([]);
@@ -29,8 +62,16 @@ export const OrganizationCampaignDetailsPage = () => {
     }
   };
 
-  const handleRemove = async () => {
-    await removeCampaignById(Id);
+  const handleUpdateStatus = async () => {
+    let details = {
+      Name: campaign.Name,
+      Description: campaign.Description,
+      Url: campaign.Url,
+      Hashtag: campaign.Hashtag,
+      Active: !campaign.Active,
+    };
+    await updateCampaignById(campaign.Id, details);
+    //console.log(details);
   };
 
   useEffect(() => {
@@ -61,7 +102,9 @@ export const OrganizationCampaignDetailsPage = () => {
             <br />
             Donation Until Now:{" "}
             {productsArr
-              .filter((obj) => obj.CampaignID === campaign.Id)
+              .filter(
+                (obj) => obj.CampaignID === campaign.Id && obj.ActivistID !== ""
+              )
               .reduce((accumulator, object) => {
                 return accumulator + object.Price;
               }, 0)}{" "}
@@ -83,15 +126,20 @@ export const OrganizationCampaignDetailsPage = () => {
           </Link>
         </div>
         <div className="orgcampaignDetails-btn3">
-          <Link
+          <button
             className="orglink-btn3"
-            // onClick={() => {
-            //   handleRemove(); /// not working ---------------------------
-            // }}
-            to={"/organization/campaigns"}
+            onClick={async () => {
+              if (campaign.Active === true) {
+                showUnActiveMessage();
+              } else {
+                showActiveMessage();
+              }
+              handleUpdateStatus();
+            }}
           >
-            Delete
-          </Link>
+            <>{campaign.Active === true ? <>UnActive</> : <>Active</>}</>
+          </button>
+          <ToastContainer />
         </div>
         <div className="orgcampaignDetails-btn4">
           <Link

@@ -30,7 +30,7 @@ export const OrganizationProductsPage = (props) => {
       {productsArr.map((product) => {
         if (product.CampaignID === Id) {
           check = true;
-          let { CompanyID, Id, Name, Description, Price } = product;
+          let { CompanyID, Id, Name, Description, Price, Image } = product;
           return (
             <OrganizationProduct
               CampaignID={CampaignID}
@@ -39,7 +39,7 @@ export const OrganizationProductsPage = (props) => {
               Name={Name}
               Description={Description}
               Price={Price}
-              // Image={Image}
+              Image={Image}
             ></OrganizationProduct>
           );
         }

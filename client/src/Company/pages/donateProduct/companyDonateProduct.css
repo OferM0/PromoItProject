@@ -12,10 +12,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  height: 550px;
   width: 600px;
   margin-left: 30%;
-  margin-top: 15vh;
+  margin-top: 12vh;
   background: linear-gradient(to right, #ee5a6f, #f29263);
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
   border-radius: 15px;
@@ -26,7 +26,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 50px;
   width: 160px !important;
   height: 50px !important;
   color: #f29263 !important;
@@ -64,7 +64,7 @@ textarea {
   position: absolute;
   color: white !important;
   font-weight: bold !important;
-  margin-top: 440px !important;
+  margin-top: 480px !important;
   margin-right: 520px !important;
   width: 40px !important;
 }

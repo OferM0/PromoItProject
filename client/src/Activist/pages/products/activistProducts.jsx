@@ -18,6 +18,7 @@ export const ActivistProductsPage = (props) => {
     let response = await getProducts();
     if (response.status === 200) {
       setProductsArr(response.data);
+      console.log(productsArr);
     }
   };
 
@@ -30,7 +31,7 @@ export const ActivistProductsPage = (props) => {
       {productsArr.map((product) => {
         if (product.CampaignID === Id && product.ActivistID === "") {
           check = true;
-          let { CompanyID, Id, Name, Description, Price } = product;
+          let { CompanyID, Id, Name, Description, Price, Image } = product;
           return (
             <ActivistProduct
               CampaignID={CampaignID}
@@ -39,7 +40,7 @@ export const ActivistProductsPage = (props) => {
               Name={Name}
               Description={Description}
               Price={Price}
-              // Image={Image}
+              Image={Image}
             ></ActivistProduct>
           );
         }

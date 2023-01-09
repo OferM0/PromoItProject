@@ -40,7 +40,7 @@ export const CompanyProductDetailsPage = () => {
       <div className="companyproductDetails-info">
         <div className="companyproductDetails-title">
           <h1>{product.Name}</h1>
-          {/* <img src={product.Image} alt={product.Name} /> */}
+          {/* <img src={product.Image} className="image-product-company2" /> */}
         </div>
         <div className="companyproductDetails-text">
           <p>{product.Description}</p>

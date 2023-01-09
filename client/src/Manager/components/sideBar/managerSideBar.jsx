@@ -37,7 +37,8 @@ export const ManagerSideBar = (props) => {
             </Link>
           </li> */}
           <li className="nav-item">
-            <Link to="/manager/users" className="nav-link link-dark aa">
+            <Link to="/" className="nav-link link-dark aa">
+              {/*manager/users*/}
               <UserIcon />
               <span className="section-name">Users</span>
             </Link>

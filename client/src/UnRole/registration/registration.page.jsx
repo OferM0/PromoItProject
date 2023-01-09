@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { addUserDetails } from "../../services/user.service";
 //---------------------------------------------
-import { getRolesById } from "../../services/roles.service";
+import { getRolesById, addRoleById } from "../../services/roles.service";
 //---------------------------------------------
 
 const showToastMessage = () => {
@@ -296,6 +296,7 @@ export const RegistrationPage = () => {
                       ) {
                         showWarningMessage();
                       } else {
+                        await addRoleById(user.sub, roleText);
                         handleSubmit();
                         showToastMessage();
                         await sleep(2000); //we want the user to be notified to the message

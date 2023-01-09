@@ -31,7 +31,7 @@ export const OrganizationProduct = ({
       <div className="orgproduct-text">
         <h1>{Name}</h1>
         <h2>By {CompanyName}</h2>
-        {/* <img src={Image} alt={Name} /> */}
+        <img src={Image} className="image-product" />
         <p>{Description}</p>
       </div>
       <div className="orgproduct-price-btn">

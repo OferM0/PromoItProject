@@ -33,7 +33,7 @@ namespace server.Entities
             return product;
         }
 
-        public void AddNewProduct(string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist, bool Shipped)
+        public void AddNewProduct(string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist, bool Shipped, string Image)
         {
             Product product = new Product
             {
@@ -45,11 +45,12 @@ namespace server.Entities
                 OrganizationID = OrganizationID,
                 CampaignID = CampaignID,
                 DonatedByActivist = DonatedByActivist,
-                Shipped= Shipped
+                Shipped= Shipped,
+                Image= Image
             };
             MainManager.Instance.productsList.Add(product);
 
-            productsQueries.InsertProductToDB(Name, Description, Price, ActivistID, CompanyID, OrganizationID, CampaignID, DonatedByActivist, Shipped);       
+            productsQueries.InsertProductToDB(Name, Description, Price, ActivistID, CompanyID, OrganizationID, CampaignID, DonatedByActivist, Shipped, Image);       
         }
 
         public void UpdateProductById(string Id, string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist, bool Shipped)

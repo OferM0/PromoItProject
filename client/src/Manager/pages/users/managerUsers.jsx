@@ -82,7 +82,7 @@ export const ManagerUsersPage = (props) => {
                 ) : (
                   <></>
                 )}
-                <th className="managerth">Complete</th>
+                <th className="managerth">Delete</th>
               </tr>
             </thead>
           </table>

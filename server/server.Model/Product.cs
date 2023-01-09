@@ -21,5 +21,7 @@ namespace server.Model
         public string ActivistID { get; set; }
         public bool DonatedByActivist { get; set; }
         public bool Shipped { get; set; }
+        public string Image { get; set; }
+
     }
 }

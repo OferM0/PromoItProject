@@ -10,6 +10,7 @@ import { ManagerCampaignsPage } from "./pages/campaigns/managerCampaigns";
 import { ManagerCampaignDetailsPage } from "./pages/campaignDetails/managerCampaignDetails";
 import { ManagerProductDetailsPage } from "./pages/productDetails/managerProductDetails";
 import { ManagerProductsPage } from "./pages/products/managerProducts";
+import { ManagerTweetsPage } from "./pages/tweets/managerTweets";
 
 function Manager() {
   return (
@@ -20,7 +21,8 @@ function Manager() {
         {/* <Route path="/" element={<HomePage />}></Route>
         <Route path="/about" element={<AboutPage />}></Route>
         <Route path="/contacts" element={<ContactsPage />}></Route> */}
-        <Route path="/manager/users" element={<ManagerUsersPage />}></Route>
+        <Route path="/" element={<ManagerUsersPage />}></Route>{" "}
+        {/*manager/users*/}
         <Route
           path="/manager/campaigns"
           element={<ManagerCampaignsPage />}
@@ -37,7 +39,7 @@ function Manager() {
           path="/manager/campaigns/:ID/products/:ID"
           element={<ManagerProductDetailsPage />}
         ></Route>
-        {/* <Route path="/manager/tweets" element={<ManagerTweetsPage />}></Route> */}
+        <Route path="/manager/tweets" element={<ManagerTweetsPage />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </div>

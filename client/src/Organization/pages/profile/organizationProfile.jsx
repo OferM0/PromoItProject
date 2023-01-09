@@ -52,7 +52,11 @@ export const OrganizationProfilePage = (props) => {
                   <div className="moneyStatus">
                     Money Donated:{" "}
                     {productsArr
-                      .filter((obj) => obj.OrganizationID === user.sub)
+                      .filter(
+                        (obj) =>
+                          obj.OrganizationID === user.sub &&
+                          obj.ActivistID !== ""
+                      )
                       .reduce((accumulator, object) => {
                         return accumulator + object.Price;
                       }, 0)}{" "}

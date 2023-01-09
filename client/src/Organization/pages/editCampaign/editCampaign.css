@@ -56,7 +56,7 @@
   margin-bottom: 20px;
 }
 
-.returnToCampaign {
+.returnToCampaign1 {
   position: absolute;
   color: white !important;
   font-weight: bold !important;
@@ -70,7 +70,7 @@
   width: 40px !important;
 }
 
-.returnToCampaign:hover {
+.returnToCampaign1:hover {
   background-color: transparent !important;
   cursor: pointer;
 }

@@ -50,8 +50,8 @@ export const ActivistCampaignDetailsPage = () => {
         </div>
         <div className="campaignDetails-details">
           <p>
-            <br />
-            Id: {campaign.Id}
+            {/* <br />
+            Id: {campaign.Id} */}
             <br />
             Url: {campaign.Url}
             <br />
@@ -66,7 +66,9 @@ export const ActivistCampaignDetailsPage = () => {
             <br />
             Donation Until Now:{" "}
             {productsArr
-              .filter((obj) => obj.CampaignID === campaign.Id)
+              .filter(
+                (obj) => obj.CampaignID === campaign.Id && obj.ActivistID !== ""
+              )
               .reduce((accumulator, object) => {
                 return accumulator + object.Price;
               }, 0)}{" "}

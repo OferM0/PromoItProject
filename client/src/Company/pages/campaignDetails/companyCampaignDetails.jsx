@@ -55,7 +55,9 @@ export const CompanyCampaignDetailsPage = () => {
             <br />
             Donation Until Now:{" "}
             {productsArr
-              .filter((obj) => obj.CampaignID === campaign.Id)
+              .filter(
+                (obj) => obj.CampaignID === campaign.Id && obj.ActivistID !== ""
+              )
               .reduce((accumulator, object) => {
                 return accumulator + object.Price;
               }, 0)}{" "}

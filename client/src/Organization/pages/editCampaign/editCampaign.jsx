@@ -8,7 +8,7 @@ import { updateCampaignById } from "../../../services/campaign.service";
 import { getCampaignById } from "../../../services/campaign.service";
 
 const showToastMessage = () => {
-  toast.success("New Campaign Created succsufully!", {
+  toast.success("Campaign edited succsufully!", {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
@@ -47,22 +47,23 @@ export const EditCampaign = () => {
 
   const [name, setName] = useState(""); // useState(campaign.Name) not working should work
   const [description, setDescription] = useState(""); //useState(campaign.Description) not working should work
-  const [url, setUrl] = useState(""); // useState(campaign.Url) not working should work
-  const [hashtag, setHashtag] = useState(""); //useState(campaign.Hashtag) not working should work
+  //const [url, setUrl] = useState(""); // useState(campaign.Url) not working should work
+  //const [hashtag, setHashtag] = useState(""); //useState(campaign.Hashtag) not working should work
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
     let details = {
       Name: name,
       Description: description,
-      Url: url,
-      Hashtag: hashtag,
+      Url: campaign.Url,
+      Hashtag: campaign.Hashtag,
+      Active: campaign.Active,
     };
     await updateCampaignById(Id, details);
     setName(name);
     setDescription(description);
-    setHashtag(url);
-    setUrl(hashtag);
+    //setHashtag(url);
+    //setUrl(hashtag);
     //console.log(details);
   };
 
@@ -78,8 +79,8 @@ export const EditCampaign = () => {
           // --------------------------some dirty code for it to work (valued imported to input fields)------------
           setName(campaign.Name);
           setDescription(campaign.Description);
-          setHashtag(campaign.Hashtag);
-          setUrl(campaign.Url);
+          //setHashtag(campaign.Hashtag);
+          //setUrl(campaign.Url);
         }}
       >
         <h3 className="campaignEditTitle">Edit Campaign</h3>
@@ -104,7 +105,7 @@ export const EditCampaign = () => {
             }}
             value={description}
           />
-          <input
+          {/* <input
             type="text"
             className="form-control"
             placeholder="Campaign's Url"
@@ -122,15 +123,18 @@ export const EditCampaign = () => {
               setHashtag(e.target.value);
             }}
             value={hashtag}
-          />
+          /> */}
         </div>
-        <div className="returnToCampaign">
+        <div className="returnToCampaign1">
           <ReturnIcon className="returnIcon" onClick={() => navigate(-1)} />
         </div>
         <button
           className="btnSaveCampaignEdit"
           onClick={() => {
-            if (name == "" || description == "" || hashtag == "" || url == "") {
+            if (
+              name == "" ||
+              description == "" /*|| hashtag == "" || url == ""*/
+            ) {
               showWarningMessage();
             } else {
               handleSubmit();

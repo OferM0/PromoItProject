@@ -27,6 +27,7 @@ namespace server.Data.Sql
                 product.CampaignID = reader.GetInt32(reader.GetOrdinal("CampaignID"));
                 product.DonatedByActivist = reader.GetBoolean(reader.GetOrdinal("DonatedByActivist"));
                 product.Shipped = reader.GetBoolean(reader.GetOrdinal("Shipped"));
+                product.Image = reader.GetString(reader.GetOrdinal("Image"));
                 productsList.Add(product);
             }
             return productsList;
@@ -47,6 +48,7 @@ namespace server.Data.Sql
                 product.CampaignID = reader.GetInt32(reader.GetOrdinal("CampaignID"));
                 product.DonatedByActivist = reader.GetBoolean(reader.GetOrdinal("DonatedByActivist"));
                 product.Shipped = reader.GetBoolean(reader.GetOrdinal("Shipped"));
+                product.Image = reader.GetString(reader.GetOrdinal("Image"));
             }
             return product;
         }
@@ -63,11 +65,11 @@ namespace server.Data.Sql
             }
         }
 
-        public void InsertProductToDB(string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist, bool Shipped)
+        public void InsertProductToDB(string Name, string Description, decimal Price, string ActivistID, string CompanyID, string OrganizationID, int CampaignID, bool DonatedByActivist, bool Shipped, string Image)
         {
             try
             {
-                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Products(Name, Description, Price,ActivistID,CompanyID,OrganizationID,CampaignID,DonatedByActivist, Shipped) Values('{Name}','{Description}','{Price}','{ActivistID}','{CompanyID}','{OrganizationID}','{CampaignID}','{DonatedByActivist}','{Shipped}')");
+                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Products(Name, Description, Price,ActivistID,CompanyID,OrganizationID,CampaignID,DonatedByActivist, Shipped, Image) Values('{Name}','{Description}','{Price}','{ActivistID}','{CompanyID}','{OrganizationID}','{CampaignID}','{DonatedByActivist}','{Shipped}','{Image}')");
             }
             catch (Exception ex)
             {
