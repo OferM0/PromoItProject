@@ -16,5 +16,6 @@ namespace server.Model
         public string Url { get; set; }
         public decimal Status { get; set; }
         public string TwitterHandle { get; set; }
+        public string CreateDate { get; set; }
     }
 }

@@ -6,11 +6,25 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export const CompanyProductsPage = (props) => {
   const [productsArr, setProductsArr] = useState([]);
+  const [FilterProducts, setFilterProducts] = useState([]);
   const { user } = useAuth0();
   const fetchData = async () => {
     let response = await getProducts();
     if (response.status === 200) {
       setProductsArr(response.data);
+      setFilterProducts(response.data);
+    }
+  };
+
+  const handleFilter = (onChangeEvent) => {
+    let freeText = onChangeEvent.target.value;
+    if (freeText) {
+      let filteredArr = productsArr.filter(
+        (product) => product.Id === parseInt(freeText)
+      );
+      setFilterProducts(filteredArr);
+    } else {
+      setFilterProducts(productsArr);
     }
   };
 
@@ -20,9 +34,30 @@ export const CompanyProductsPage = (props) => {
 
   return (
     <div className="productsPage">
-      {productsArr.map((product) => {
-        if (product.CompanyID === user.sub) {
-          let { OrganizationID, Id, Name, Description, Price, Image } = product;
+      <div classNameName="input-group input-group-sm mb-3 filterContainer">
+        <input
+          placeholder="Search product by id"
+          type="text"
+          className="form-control filter"
+          aria-label="Small"
+          aria-describedby="inputGroup-sizing-sm"
+          onChange={handleFilter}
+        />
+      </div>
+      {FilterProducts.map((product) => {
+        if (
+          product.CompanyID === user.sub &&
+          product.DonatedByActivist === false
+        ) {
+          let {
+            OrganizationID,
+            Id,
+            Name,
+            Description,
+            Price,
+            Image,
+            CampaignID,
+          } = product;
           return (
             <CompanyProduct
               OrganizationID={OrganizationID}
@@ -31,6 +66,7 @@ export const CompanyProductsPage = (props) => {
               Description={Description}
               Price={Price}
               Image={Image}
+              CampaignID={CampaignID}
             ></CompanyProduct>
           );
         }

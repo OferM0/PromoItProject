@@ -43,19 +43,22 @@ export const ManagerCampaignDetailsPage = () => {
         </div>
         <div className="campaignDetails-details">
           <p>
-            <br />
             Id: {campaign.Id}
             <br />
             Url: {campaign.Url}
             <br />
             Hashtag: #{campaign.Hashtag}
             <br />
+            <p className="spanOnlyDate">Created At: {campaign.CreateDate}</p>
+            <br />
             Connected Products:{" "}
             {productsArr.filter((obj) => obj.CampaignID === campaign.Id).length}
             <br />
             Donation Until Now:{" "}
             {productsArr
-              .filter((obj) => obj.CampaignID === campaign.Id)
+              .filter(
+                (obj) => obj.CampaignID === campaign.Id && obj.ActivistID !== ""
+              )
               .reduce((accumulator, object) => {
                 return accumulator + object.Price;
               }, 0)}{" "}

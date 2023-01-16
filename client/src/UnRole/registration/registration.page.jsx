@@ -7,6 +7,7 @@ import { addUserDetails } from "../../services/user.service";
 //---------------------------------------------
 import { getRolesById, addRoleById } from "../../services/roles.service";
 //---------------------------------------------
+import { getUsers } from "../../services/user.service";
 
 const showToastMessage = () => {
   toast.success("We recived your registration, Please Login again!", {
@@ -22,7 +23,7 @@ const showToastMessage = () => {
 };
 
 const showWarningMessage = () => {
-  toast.error("Please check all fields not empty!", {
+  toast.error("Please check all fields are valid!", {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
@@ -81,6 +82,34 @@ const showCompanyInfo = () => {
     }
   );
 };
+
+function validateURL(textval) {
+  var urlregex = new RegExp(
+    "^(http|https|ftp)://([a-zA-Z0-9.-]+(:[a-zA-Z0-9.&amp;%$-]+)*@)*((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]).(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0).(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0).(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|([a-zA-Z0-9-]+.)*[a-zA-Z0-9-]+.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(:[0-9]+)*(/($|[a-zA-Z0-9.,?'\\+&amp;%$#=~_-]+))*$"
+  );
+  return urlregex.test(textval);
+}
+
+function isValidFullName(name) {
+  // let nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
+  // if (nameRegex.test(name) === false) {
+  //   return false;
+  // }
+
+  if (name.length < 2) {
+    return false;
+  }
+
+  // let nameArray = name.split(" ");
+  // if (nameArray.length < 2) {
+  //   return false;
+  // }
+  // if (nameArray[0].length < 2 || nameArray[1].length < 2) {
+  //   return false;
+  // }
+  return true;
+}
+
 export const RegistrationPage = () => {
   const [roleText, setRoleText] = useState("Non-Profit Organization");
   const [twitterHandle, setTwitterHandle] = useState("");
@@ -88,6 +117,7 @@ export const RegistrationPage = () => {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [url, setUrl] = useState("");
+  const [usersArr, setUsersArr] = useState([]);
   const { user, logout } = useAuth0();
   const sleep = (ms) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -106,11 +136,29 @@ export const RegistrationPage = () => {
   //   handleRole();
   // }, []);
   //-------------------------------------------------
+  const fetchData = async () => {
+    let response = await getUsers();
+    if (response.status === 200) {
+      setUsersArr(Object.values(response.data));
+      //console.log(users);
+    }
+  };
+
   const handleRoleChange = (event) => {
     setRoleText(event.target.value);
   };
 
   const handleSubmit = async () => {
+    let date = new Date();
+    console.log(date);
+    let day = date.getDate();
+    let month = date.getMonth();
+    // set the day to the current month /----------------replace day and month because when enter normal to sql it's replaced
+    //date.setDate(month + 1);
+    // set the month to the current day
+    //date.setMonth(day - 1);
+    console.log(date);
+
     if (roleText === "Non-Profit Organization") {
       let details = {
         UserID: user.sub,
@@ -119,6 +167,7 @@ export const RegistrationPage = () => {
         Address: address,
         Phone: phone,
         Url: url,
+        CreateDate: date.toISOString().slice(0, 10),
       };
       await addUserDetails(details);
       setName("");
@@ -135,6 +184,7 @@ export const RegistrationPage = () => {
         Phone: phone,
         Status: 0,
         TwitterHandle: twitterHandle,
+        CreateDate: date.toISOString().slice(0, 10),
       };
       await addUserDetails(details);
       setName("");
@@ -150,6 +200,7 @@ export const RegistrationPage = () => {
         Address: address,
         Phone: phone,
         TwitterHandle: twitterHandle,
+        CreateDate: date.toISOString().slice(0, 10),
       };
       await addUserDetails(details);
       setName("");
@@ -159,6 +210,10 @@ export const RegistrationPage = () => {
       //console.log(details);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     // <>
@@ -287,11 +342,20 @@ export const RegistrationPage = () => {
                     className="btn-Register"
                     onClick={async () => {
                       if (
+                        address.length < 6 ||
+                        /*url.length < 10 ||*/
+                        /^0\d{9}$/.test(phone) === false ||
+                        isValidFullName(name) === false ||
                         name == "" ||
                         address == "" ||
                         phone == "" ||
-                        (url == "" && roleText === "Non-Profit Organization") ||
-                        (twitterHandle == "" &&
+                        ((url == "" || validateURL(url) === false) &&
+                          roleText === "Non-Profit Organization") ||
+                        ((twitterHandle == "" ||
+                          twitterHandle.length < 4 ||
+                          usersArr.find(
+                            (obj) => obj["TwitterHandle"] === twitterHandle
+                          ) !== undefined) &&
                           roleText !== "Non-Profit Organization")
                       ) {
                         showWarningMessage();
@@ -300,7 +364,7 @@ export const RegistrationPage = () => {
                         handleSubmit();
                         showToastMessage();
                         await sleep(2000); //we want the user to be notified to the message
-                        logout({ returnTo: window.location.origin });
+                        //logout({ returnTo: window.location.origin });
                       }
                     }}
                   >

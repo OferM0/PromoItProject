@@ -33,7 +33,7 @@ namespace server.Entities
             return user;
         }
 
-        public void AddNewUser(string UserID, string Role, string Name, string Address, string Phone, string Url, decimal Status, string TwitterHandle)
+        public void AddNewUser(string UserID, string Role, string Name, string Address, string Phone, string Url, decimal Status, string TwitterHandle, string CreateDate)
         {
             User user = new User
             {
@@ -44,11 +44,12 @@ namespace server.Entities
                 Phone = Phone,
                 Url = Url,
                 Status = Status,
-                TwitterHandle = TwitterHandle
+                TwitterHandle = TwitterHandle,
+                CreateDate = CreateDate
             };
             MainManager.Instance.usersList.Add(UserID,user);
 
-            usersQueries.InsertUserToDB(UserID, Role, Name,  Address, Phone, Url, Status, TwitterHandle);
+            usersQueries.InsertUserToDB(UserID, Role, Name,  Address, Phone, Url, Status, TwitterHandle, CreateDate);
         }
 
         public void UpdateUserById(string UserID, string Name, string Address, string Phone, string Url, decimal Status)  //not update to Role

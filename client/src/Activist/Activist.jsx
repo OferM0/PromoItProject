@@ -10,6 +10,7 @@ import { ActivistCampaignDetailsPage } from "./pages/campaignDetails/activistCam
 import { ActivistProductDetailsPage } from "./pages/productDetails/activistProductDetails";
 import { ActivistProductsPage } from "./pages/products/activistProducts";
 import { ActivistMyProductsPage } from "./pages/myProducts/activistMyProducts";
+import { ActivistTweetsPage } from "./pages/tweets/activistTweets";
 
 function Activist() {
   return (
@@ -39,6 +40,7 @@ function Activist() {
           path="/activist/myProducts"
           element={<ActivistMyProductsPage />}
         ></Route>
+        <Route path="/activist/tweets" element={<ActivistTweetsPage />}></Route>
         <Route
           path="/activistProfile"
           element={<ActivistProfilePage />}

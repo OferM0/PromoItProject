@@ -6,13 +6,15 @@ import "./companyProductDetails.css";
 import { getProductById } from "../../../services/product.service";
 import { UserDetailsContext } from "../../../context/userDetails.context";
 import { getUserById } from "../../../services/user.service";
+import { getCampaignById } from "../../../services/campaign.service";
 
 export const CompanyProductDetailsPage = () => {
   const [product, setProduct] = useState([]);
   const { userDetails } = useContext(UserDetailsContext);
   const location = useLocation();
-  const { Id, OrganizationID } = location.state;
+  const { Id, OrganizationID, CampaignID } = location.state;
   const [organizationName, setOrganizationName] = useState("");
+  const [campaignName, setCampaignName] = useState("");
 
   const fetchData = async () => {
     let response = await getProductById(Id);
@@ -30,9 +32,18 @@ export const CompanyProductDetailsPage = () => {
     }
   };
 
+  const fetchData3 = async () => {
+    let response = await getCampaignById(CampaignID);
+    if (response.status === 200) {
+      setCampaignName(response.data.Name);
+      //console.log(response.data.Name);
+    }
+  };
+
   useEffect(() => {
     fetchData();
     fetchData2();
+    fetchData3();
   }, []);
 
   return (
@@ -40,9 +51,9 @@ export const CompanyProductDetailsPage = () => {
       <div className="companyproductDetails-info">
         <div className="companyproductDetails-title">
           <h1>{product.Name}</h1>
-          {/* <img src={product.Image} className="image-product-company2" /> */}
+          <img src={product.Image} className="image-product-company2" />
         </div>
-        <div className="companyproductDetails-text">
+        <div className="companyproductDetails-text2">
           <p>{product.Description}</p>
         </div>
         <div className="companyproductDetails-details">
@@ -53,6 +64,18 @@ export const CompanyProductDetailsPage = () => {
             Price: {product.Price}$
             <br />
             Donated to: {organizationName}
+            <br />
+            Campaign connected: {campaignName}
+            <br />
+            Baught: {product.ActivistID !== "" ? <>Yes</> : <>No</>}
+            {product.ActivistID !== "" ? (
+              <>
+                <br />
+                Shipped: {product.Shipped === true ? <>Yes</> : <>No</>}
+              </>
+            ) : (
+              <></>
+            )}
           </p>
         </div>
         <div className="companyproductDetails-btn">

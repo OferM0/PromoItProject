@@ -9,3 +9,222 @@
   flex-wrap: wrap !important;
   background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%) !important;
 }
+
+.filter5 {
+  position: absolute;
+  margin-top: 75px !important;
+  margin-bottom: 15px !important;
+  width: 400px !important;
+  margin-left: 460px !important;
+  height: 40px !important;
+}
+
+.datePosition2 {
+  margin-left: 30px;
+}
+
+.DateRange2 {
+  position: absolute;
+  margin-top: 80px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.setDropDownPosition2 {
+  position: absolute;
+  margin-top: 77px;
+  margin-left: 880px;
+}
+
+.wrapper5 {
+  position: absolute;
+  margin-top: 10px !important;
+  margin-left: 27%;
+  display: inline-flex;
+  background: #fff;
+  height: 57px;
+  width: 500px;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  padding: 15px 10px;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+}
+.wrapper5 .option {
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 10px;
+  border: 2px solid lightgrey;
+  transition: all 0.3s ease;
+}
+.wrapper5 .option .dot {
+  height: 20px;
+  width: 20px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+}
+.wrapper5 .option .dot::before {
+  position: absolute;
+  content: "";
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background: #13547a;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+}
+.wrapper5 input[type="radio"] {
+  display: none;
+}
+#Active:checked:checked ~ .Active,
+#UnActive:checked:checked ~ .UnActive {
+  border-color: linear-gradient(to right, #ee5a6f, #f29263);
+  background: linear-gradient(to right, #ee5a6f, #f29263);
+}
+#Active:checked:checked ~ .Active .dot,
+#UnActive:checked:checked ~ .UnActive .dot {
+  background: #fff;
+}
+#Active:checked:checked ~ .Active .dot::before,
+#UnActive:checked:checked ~ .UnActive .dot::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.wrapper5 .option span {
+  font-size: 20px;
+  color: #808080;
+}
+#Active:checked:checked ~ .Active span,
+#UnActive:checked:checked ~ .UnActive span {
+  color: #fff;
+}
+
+.makeReport2,
+.resetReport2 {
+  margin-top: 71px;
+  margin-left: 1180px;
+  position: absolute;
+  height: 50px;
+  width: 90px;
+  box-shadow: inset 0px 1px 0px 0px #dcecfb;
+  background: linear-gradient(to bottom, #facabd 5%, #ea8280 100%);
+  border-radius: 10px;
+  border: 1px solid #f38484;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #cc5252;
+}
+.makeReport2:hover {
+  background: linear-gradient(to bottom, #bc422d 5%, #d97d7d 100%);
+}
+.makeReport2:active {
+  transform: scale(1.2);
+}
+
+.resetReport2 {
+  margin-left: 1080px !important;
+}
+
+table {
+  width: 100%;
+  table-layout: auto;
+}
+
+.tbl-header2 {
+  margin-top: 130px !important;
+  background: linear-gradient(to right, #ee5a6f, #f29263);
+  height: 55px;
+  opacity: 0.9;
+  width: 2000px;
+}
+
+.tbl-header2 thead tr {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.tbl-content2 {
+  height: 480px;
+  overflow-x: auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(to right, #ee5a6f, #f29263);
+  opacity: 0.8;
+}
+
+.tbl-content2 tbody tr {
+  display: flex;
+  justify-content: space-around;
+}
+
+.managerth2 {
+  padding: 10px 0px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #13547a;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.managertd2 {
+  width: 140px;
+  height: 90px;
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 400;
+  font-size: 13px;
+  color: #fff;
+  border-bottom: solid 2.5px rgba(255, 255, 255, 0.1);
+  overflow: auto;
+}
+
+.managertd2:nth-child(1) {
+  margin-right: -80px;
+}
+.managertd2:nth-child(2) {
+  margin-right: -60px;
+}
+.managertd2:nth-child(3) {
+  margin-right: -30px;
+}
+.managertd2:nth-child(4) {
+  margin-right: -60px;
+}
+.managertd2:nth-child(5) {
+  margin-right: -10px;
+  width: 100px;
+}
+.managertd2:nth-child(10) {
+  text-align: center;
+}
+.managertd2:nth-child(9) {
+  text-align: center;
+}
+.section2 {
+  margin: 10px !important;
+}
+
+/* .spanOnlyDate2 {
+  width: 66.5px !important;
+  text-overflow: clip;
+  white-space: nowrap;
+  overflow: hidden;
+} */

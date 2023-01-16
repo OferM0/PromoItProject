@@ -22,7 +22,7 @@ const showToastMessage = () => {
 };
 
 const showWarningMessage = () => {
-  toast.error("Please check all fields not empty!", {
+  toast.error("Please check all fields are valid!", {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
@@ -33,6 +33,22 @@ const showWarningMessage = () => {
     theme: "light",
   });
 };
+
+function isValidFullName(name) {
+  let nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
+  if (nameRegex.test(name) === false) {
+    return false;
+  }
+
+  let nameArray = name.split(" ");
+  if (nameArray.length < 2) {
+    return false;
+  }
+  if (nameArray[0].length < 2 || nameArray[1].length < 2) {
+    return false;
+  }
+  return true;
+}
 
 export const ActivistProfileEditPage = () => {
   const { user } = useAuth0();
@@ -102,7 +118,14 @@ export const ActivistProfileEditPage = () => {
         <button
           className="btnSaveProfileEdit"
           onClick={() => {
-            if (name == "" || address == "" || phone == "") {
+            if (
+              name == "" ||
+              address == "" ||
+              address.length < 6 ||
+              phone == "" ||
+              /^0\d{9}$/.test(phone) === false ||
+              isValidFullName(name) === false
+            ) {
               showWarningMessage();
             } else {
               handleSubmit();

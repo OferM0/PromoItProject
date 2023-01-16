@@ -30,7 +30,7 @@ namespace server.Entities
             return campaign;
         }
 
-        public void AddNewCampaign(string OrganizationID, string Name, string Description, string Url, string Hashtag, bool Active)
+        public void AddNewCampaign(string OrganizationID, string Name, string Description, string Url, string Hashtag, bool Active, string CreateDate)
         {
             Campaign campaign = new Campaign
             {
@@ -39,16 +39,17 @@ namespace server.Entities
                 Description = Description,
                 Url = Url,
                 Hashtag = Hashtag,
-                Active = Active
+                Active = Active,
+                CreateDate = CreateDate
             };
             MainManager.Instance.campaignsList.Add(campaign);
 
-            campaignsQueries.InsertCampaignToDB(OrganizationID, Name, Description, Url, Hashtag, Active);
+            campaignsQueries.InsertCampaignToDB(OrganizationID, Name, Description, Url, Hashtag, Active, CreateDate);
         }
 
-        public void UpdateCampaignById(string Id, string Name, string Description, string Url, string Hashtag, bool Active)
+        public void UpdateCampaignById(string Id, string Name, string Description, string Url, string Hashtag, bool Active/*, DateTime CreateDate*/)
         {
-            campaignsQueries.UpdateCampaignInDB(Id, Name, Description, Url, Hashtag, Active);
+            campaignsQueries.UpdateCampaignInDB(Id, Name, Description, Url, Hashtag, Active/*, CreateDate*/);
             //MainManager.Instance.campaignsList[id]=new Campaign { Id=Id, OrganizationID=OrganizationID, Name=Name, Description=Description, Url=Url, Hashtag=Hashtag, Active=Active};
         }
 

@@ -35,7 +35,7 @@
   text-transform: uppercase;
   color: #aba5a5;
   letter-spacing: 0.2em;
-  margin-bottom: 20px !important;
+  margin-bottom: 0px !important;
 }
 .campaign-text > h1,
 .campaign-price-btn > p {

@@ -11,6 +11,7 @@ export const CompanyProduct = ({
   Description,
   Price,
   Image,
+  CampaignID,
 }) => {
   const { userDetails } = useContext(UserDetailsContext);
   return (
@@ -25,7 +26,7 @@ export const CompanyProduct = ({
         </p>
         <Link
           to={"/company/products/" + Id}
-          state={{ Id, OrganizationID }}
+          state={{ Id, OrganizationID, CampaignID }}
           className="link-btn"
         >
           More...

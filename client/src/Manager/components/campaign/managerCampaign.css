@@ -1,7 +1,7 @@
-.campaign-info {
+.campaign-info11 {
   margin-left: 40px;
   margin-right: 30px !important;
-  margin-top: 90px;
+  margin-top: 130px;
   height: 540px;
   width: 350px;
   border-radius: 0 10px 27px 10px;
@@ -12,7 +12,7 @@
   align-content: center;
 }
 
-.campaign-text {
+.campaign-text11 {
   height: 470px;
   width: 320px;
   display: flex;
@@ -20,14 +20,14 @@
   text-align: center;
 }
 
-.campaign-text > h1 {
+.campaign-text11 > h1 {
   margin: 0 0 0 28px;
   padding-top: 20px;
   font-size: 30px;
   color: #474747;
   padding-bottom: 0;
 }
-.campaign-text > h2 {
+.campaign-text11 > h2 {
   margin: 0 0 47px 28px;
   font-size: 13px;
   font-family: "Raleway", sans-serif;
@@ -35,14 +35,13 @@
   text-transform: uppercase;
   color: #aba5a5;
   letter-spacing: 0.2em;
-  margin-bottom: 20px !important;
+  margin-bottom: 10px !important;
 }
-.campaign-text > h1,
-.campaign-price-btn > p {
+.campaign-text11 > h1 {
   font-family: "Bentham", serif;
 }
 
-.campaign-text > p {
+.campaign-text11 > p {
   margin-top: 30px !important;
   margin: 0 0 0 28px;
   font-family: "Playfair Display", serif;
@@ -53,7 +52,7 @@
   overflow: hidden;
 }
 
-.campaign-text > a {
+.campaign-text11 > a {
   align-self: center;
   margin: 0 0 0 28px;
   font-family: "Playfair Display", serif;
@@ -64,12 +63,12 @@
   overflow: hidden;
 }
 
-.campaign-text > a:hover {
+.campaign-text11 > a:hover {
   background-color: transparent !important;
   color: #4654af;
 }
 
-.campaign-text > span {
+.campaign-text11 > span {
   margin-top: 30px !important;
   margin: 0 0 0 28px;
   font-family: "Playfair Display", serif;

@@ -50,6 +50,8 @@ export const CompanyCampaignDetailsPage = () => {
             <br />
             Hashtag: #{campaign.Hashtag}
             <br />
+            <p className="spanOnlyDate">Created At: {campaign.CreateDate}</p>
+            <br />
             Connected Products:{" "}
             {productsArr.filter((obj) => obj.CampaignID === campaign.Id).length}
             <br />

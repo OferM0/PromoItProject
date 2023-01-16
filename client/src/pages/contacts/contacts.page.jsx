@@ -21,7 +21,7 @@ const showToastMessage = () => {
 };
 
 const showWarningMessage = () => {
-  toast.error("Please check all fields not empty!", {
+  toast.error("Please check all fields are valid!", {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
@@ -32,6 +32,36 @@ const showWarningMessage = () => {
     theme: "light",
   });
 };
+
+function isValidFullName(name) {
+  // let nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
+  // if (nameRegex.test(name) === false) {
+  //   return false;
+  // }
+
+  if (name.length < 2) {
+    return false;
+  }
+
+  // let nameArray = name.split(" ");
+  // if (nameArray.length < 2) {
+  //   return false;
+  // }
+  // if (nameArray[0].length < 2 || nameArray[1].length < 2) {
+  //   return false;
+  // }
+  return true;
+}
+
+function validateEmail(email) {
+  if (email.length < 3) {
+    //----------shortest email address possible checked in internet---------------
+    return false;
+  }
+  var re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z0-9\-_+.]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
 
 export const ContactsPage = (props) => {
   const { userDetails } = useContext(UserDetailsContext);
@@ -127,7 +157,16 @@ export const ContactsPage = (props) => {
           <button
             className="sendbtn"
             onClick={() => {
-              if (name == "" || email == "" || phone == "" || message == "") {
+              if (
+                name == "" ||
+                email == "" ||
+                phone == "" ||
+                message == "" ||
+                /^0\d{9}$/.test(phone) === false ||
+                isValidFullName(name) === false ||
+                message.length < 6 ||
+                validateEmail(email) === false
+              ) {
                 showWarningMessage();
               } else {
                 handleSubmit();

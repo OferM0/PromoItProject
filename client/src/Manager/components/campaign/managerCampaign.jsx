@@ -24,8 +24,8 @@ export const ManagerCampaign = ({
     fetchData();
   }, []);
   return (
-    <div className="campaign-info">
-      <div className="campaign-text">
+    <div className="campaign-info11">
+      <div className="campaign-text11">
         <h1>{Name}</h1>
         <h2>By {OrganizationName}</h2>
         <p>{Description}</p>

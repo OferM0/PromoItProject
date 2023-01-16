@@ -115,3 +115,7 @@
 .orgproduct-price-btn .link-btn:hover {
   background-color: #79b0a1;
 }
+
+.product-status-info {
+  margin-left: 135px !important;
+}

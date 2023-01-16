@@ -1,4 +1,6 @@
 import axios from "axios";
+import { startEndpoint } from "./api";
+import e from "cors";
 //const axios = require("axios");
 
 // const tweet =
@@ -41,9 +43,8 @@ import axios from "axios";
 
 export const getTweetsByUser = async (User, Hashtag) => {
   try {
-    const api =
-      "http://localhost:7181/api/Tweets/Get/tweet/" + User + "/" + Hashtag;
-    let response = await axios.get(api);
+    let endpoint = startEndpoint + `/Tweets/Get/tweet/${User}/${Hashtag}`;
+    let response = await axios.get(endpoint);
     return response;
   } catch (e) {
     console.log(e);
@@ -52,9 +53,24 @@ export const getTweetsByUser = async (User, Hashtag) => {
 
 export const getRetweetsOfUser = async (User, Hashtag) => {
   try {
-    let response = await axios.get(
-      `http://localhost:7181/api/Tweets/Get/retweet/${User}/${Hashtag}`
-    );
+    let endpoint = startEndpoint + `/Tweets/Get/retweet/${User}/${Hashtag}`;
+    let response = await axios.get(endpoint);
+    return response;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const postTweetsByManager = async (
+  activistTwitterHandle,
+  companyTwitterHandle,
+  productId
+) => {
+  try {
+    let endpoint =
+      startEndpoint +
+      `/Tweets/Post/${activistTwitterHandle}/${companyTwitterHandle}/${productId}`;
+    let response = await axios.post(endpoint);
     return response;
   } catch (e) {
     console.log(e);

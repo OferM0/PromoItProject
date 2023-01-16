@@ -56,7 +56,7 @@ export const ActivistProfilePage = (props) => {
   const { userDetails, setUserDetails } = useContext(UserDetailsContext);
   const [tweets, setTweets] = useState(0);
   const [retweets, setRetweets] = useState(0);
-
+  const [status, setStatus] = useState(userDetails.Status);
   const fetchData = async () => {
     let response = await getProducts();
     if (response.status === 200) {
@@ -119,6 +119,7 @@ export const ActivistProfilePage = (props) => {
     };
     console.log(details.Status);
     await updateUserById(user.sub, details);
+    setStatus(details.Status);
     let userD = userDetails;
     userD.Status = details.Status;
     setUserDetails(userD);
@@ -170,7 +171,8 @@ export const ActivistProfilePage = (props) => {
                       retweets -
                       productsArr.filter((obj) => obj.ActivistID === user.sub)
                         .length*/
-                      userDetails.Status
+                      //userDetails.Status
+                      status
                     }{" "}
                     $
                   </div>
@@ -234,6 +236,15 @@ export const ActivistProfilePage = (props) => {
                               obj.DonatedByActivist === true
                           ).length
                         }
+                      </h6>
+                    </div>
+                  </div>
+                  <h6 className="m-b-20 m-t-40 p-b-5"></h6>
+                  <div className="row">
+                    <div className="col-sm-6">
+                      <p className="m-b-10 f-w-600">Create Date</p>
+                      <h6 className="text-muted f-w-400">
+                        {userDetails.CreateDate}
                       </h6>
                     </div>
                   </div>

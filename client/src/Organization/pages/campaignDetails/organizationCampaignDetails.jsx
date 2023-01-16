@@ -51,7 +51,9 @@ export const OrganizationCampaignDetailsPage = () => {
     let response = await getCampaignById(Id);
     if (response.status === 200) {
       setCampaign(response.data);
-      //console.log(campaign);
+      //let date = new Date();
+      //console.log(date.toISOString().slice(0, 10));
+      //console.log(campaign.CreateDate.substring(0, 10));
     }
   };
 
@@ -96,6 +98,10 @@ export const OrganizationCampaignDetailsPage = () => {
             Url: {campaign.Url}
             <br />
             Hashtag: #{campaign.Hashtag}
+            <br />
+            Active: {campaign.Active === true ? <>true</> : <>false</>}
+            <br />
+            <p className="spanOnlyDate">Created At: {campaign.CreateDate}</p>
             <br />
             Connected Products:{" "}
             {productsArr.filter((obj) => obj.CampaignID === campaign.Id).length}

@@ -7,6 +7,7 @@ import CampaignIcon from "@mui/icons-material/Campaign";
 import ProductIcon from "@mui/icons-material/LocalMall";
 import FaceIconfrom from "@mui/icons-material/Face";
 import LogOutIconfrom from "@mui/icons-material/Logout";
+import TweetIcon from "@mui/icons-material/Twitter";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -45,6 +46,12 @@ export const ActivistSideBar = (props) => {
             <Link to="/activist/myProducts" className="nav-link link-dark aa">
               <ProductIcon />
               <span className="section-name">My Products</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/activist/tweets" className="nav-link link-dark aa">
+              <TweetIcon />
+              <span className="section-name">My Tweets</span>
             </Link>
           </li>
           <li>

@@ -1,11 +1,85 @@
 .campaignsPage {
   overflow-y: hidden;
-  flex-direction: column !important;
   display: flex !important;
+  flex-direction: column !important;
   margin: 0 !important;
   padding: 0 !important;
   width: 100% !important;
   height: 100vh !important;
   flex-wrap: wrap !important;
   background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%) !important;
+}
+
+.wrapper2 {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 26%;
+  display: inline-flex;
+  background: #fff;
+  height: 60px;
+  width: 600px;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  padding: 15px 10px;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+}
+.wrapper2 .option2 {
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 10px;
+  border: 2px solid lightgrey;
+  transition: all 0.3s ease;
+}
+.wrapper2 .option2 .dot2 {
+  height: 20px;
+  width: 20px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+}
+.wrapper2 .option2 .dot2::before {
+  position: absolute;
+  content: "";
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background: #13547a;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+}
+.wrapper2 input[type="radio"] {
+  display: none;
+}
+#Active:checked:checked ~ .Active,
+#UnActive:checked:checked ~ .UnActive {
+  border-color: linear-gradient(to right, #ee5a6f, #f29263);
+  background: linear-gradient(to right, #ee5a6f, #f29263);
+}
+#Active:checked:checked ~ .Active .dot2,
+#UnActive:checked:checked ~ .UnActive .dot2 {
+  background: #fff;
+}
+#Active:checked:checked ~ .Active .dot2::before,
+#UnActive:checked:checked ~ .UnActive .dot2::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.wrapper2 .option2 span {
+  font-size: 20px;
+  color: #808080;
+}
+#Active:checked:checked ~ .Active span,
+#UnActive:checked:checked ~ .UnActive span {
+  color: #fff;
 }

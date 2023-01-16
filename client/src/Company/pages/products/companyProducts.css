@@ -9,3 +9,12 @@
   flex-wrap: wrap !important;
   background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%) !important;
 }
+
+.filter {
+  position: absolute;
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+  width: 400px !important;
+  margin-left: 460px !important;
+  height: 40px !important;
+}

@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { ActivistProduct } from "../../components/product/activistProduct";
 import { getProducts } from "../../../services/product.service";
 import "./activistProducts.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { UserDetailsContext } from "../../../context/userDetails.context";
 
 export const ActivistProductsPage = (props) => {
   const [productsArr, setProductsArr] = useState([]);
+  const [sortProductsArr, setSortProductsArr] = useState([]);
+  const { userDetails, setUserDetails } = useContext(UserDetailsContext);
   const navigate = useNavigate();
   const { user } = useAuth0();
   const location = useLocation();
@@ -18,7 +21,42 @@ export const ActivistProductsPage = (props) => {
     let response = await getProducts();
     if (response.status === 200) {
       setProductsArr(response.data);
-      console.log(productsArr);
+      // const filterArr = Object.values(productsArr).filter(
+      //   (product) => product.CampaignID === Id && product.ActivistID === ""
+      // );
+
+      // const groupedObjects = filterArr.reduce((acc, obj) => {
+      //   const modifiedObject = { ...obj };
+      //   delete modifiedObject.Id;
+      //   const key = JSON.stringify(modifiedObject);
+      //   if (!acc[key]) {
+      //     acc[key] = [];
+      //   }
+      //   acc[key].push(obj);
+      //   return acc;
+      // }, {});
+
+      //console.log(Object.values(groupedObjects));
+      setSortProductsArr(
+        Object.values(
+          Object.values(response.data)
+            .filter(
+              (product) =>
+                product.CampaignID === Id && product.ActivistID === ""
+            )
+            .reduce((acc, obj) => {
+              const modifiedObject = { ...obj };
+              delete modifiedObject.Id;
+              const key = JSON.stringify(modifiedObject);
+              if (!acc[key]) {
+                acc[key] = [];
+              }
+              acc[key].push(obj);
+              return acc;
+            }, {})
+        )
+      );
+      console.log(sortProductsArr);
     }
   };
 
@@ -28,10 +66,11 @@ export const ActivistProductsPage = (props) => {
 
   return (
     <div className="productsPage">
-      {productsArr.map((product) => {
-        if (product.CampaignID === Id && product.ActivistID === "") {
+      <div className="statusInfo">Your Status: {userDetails.Status} $</div>
+      {sortProductsArr.map((product) => {
+        if (product[0].CampaignID === Id && product[0].ActivistID === "") {
           check = true;
-          let { CompanyID, Id, Name, Description, Price, Image } = product;
+          let { CompanyID, Id, Name, Description, Price, Image } = product[0];
           return (
             <ActivistProduct
               CampaignID={CampaignID}
@@ -41,6 +80,7 @@ export const ActivistProductsPage = (props) => {
               Description={Description}
               Price={Price}
               Image={Image}
+              Stock={product.length}
             ></ActivistProduct>
           );
         }

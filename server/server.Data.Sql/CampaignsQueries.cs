@@ -24,6 +24,7 @@ namespace server.Data.Sql
                 campaign.Url = reader.GetString(reader.GetOrdinal("Url"));
                 campaign.Hashtag = reader.GetString(reader.GetOrdinal("Hashtag"));
                 campaign.Active = reader.GetBoolean(reader.GetOrdinal("Active"));
+                campaign.CreateDate = reader.GetDateTime(reader.GetOrdinal("CreateDate")).ToString("yyyy-MM-dd");
                 campaignsList.Add(campaign);
             }
             return campaignsList;
@@ -41,6 +42,7 @@ namespace server.Data.Sql
                 campaign.Url = reader.GetString(reader.GetOrdinal("Url"));
                 campaign.Hashtag = reader.GetString(reader.GetOrdinal("Hashtag"));
                 campaign.Active= reader.GetBoolean(reader.GetOrdinal("Active"));
+                campaign.CreateDate = reader.GetDateTime(reader.GetOrdinal("CreateDate")).ToString("yyyy-MM-dd");
             }
             return campaign;
         }
@@ -57,11 +59,11 @@ namespace server.Data.Sql
             }
         }
 
-        public void InsertCampaignToDB(string OrganizationID, string Name, string Description, string Url, string Hashtag, bool Active)
+        public void InsertCampaignToDB(string OrganizationID, string Name, string Description, string Url, string Hashtag, bool Active, string CreateDate)
         {
             try
             {
-                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Campaigns(OrganizationID, Name, Description, Url, Hashtag, Active) Values('{OrganizationID}','{Name}','{Description}','{Url}','{Hashtag}','{Active}')");
+                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Campaigns(OrganizationID, Name, Description, Url, Hashtag, Active, CreateDate) Values('{OrganizationID}','{Name}','{Description}','{Url}','{Hashtag}','{Active}','{CreateDate}')");
             }
             catch (Exception ex)
             {
@@ -92,7 +94,7 @@ namespace server.Data.Sql
             }
         }
 
-        public void UpdateCampaignInDB(string Id, string Name, string Description, string Url, string Hashtag, bool Active)
+        public void UpdateCampaignInDB(string Id, string Name, string Description, string Url, string Hashtag, bool Active/*, DateTime CreateDate*/)
         {
             try
             {

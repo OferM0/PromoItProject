@@ -43,7 +43,11 @@ export const CompanyProfilePage = (props) => {
                   <div className="moneyStatus">
                     Money Donated:{" "}
                     {productsArr
-                      .filter((obj) => obj.CompanyID === user.sub)
+                      .filter(
+                        (obj) =>
+                          obj.CompanyID === user.sub &&
+                          obj.DonatedByActivist === false
+                      )
                       .reduce((accumulator, object) => {
                         return accumulator + object.Price;
                       }, 0)}{" "}
@@ -92,9 +96,17 @@ export const CompanyProfilePage = (props) => {
                       <h6 className="text-muted f-w-400">
                         {
                           productsArr.filter(
-                            (obj) => obj.CompanyID === user.sub
+                            (obj) =>
+                              obj.CompanyID === user.sub &&
+                              obj.DonatedByActivist === false
                           ).length
                         }
+                      </h6>
+                    </div>
+                    <div className="col-sm-6">
+                      <p className="m-b-10 f-w-600">Create Date</p>
+                      <h6 className="text-muted f-w-400">
+                        {userDetails.CreateDate}
                       </h6>
                     </div>
                   </div>

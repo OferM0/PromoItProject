@@ -57,6 +57,8 @@ export const ActivistCampaignDetailsPage = () => {
             <br />
             Hashtag: #{campaign.Hashtag}
             <br />
+            <p className="spanOnlyDate">Created At: {campaign.CreateDate}</p>
+            <br />
             Available Products:{" "}
             {
               productsArr.filter(

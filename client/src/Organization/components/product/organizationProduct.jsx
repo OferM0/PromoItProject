@@ -13,6 +13,7 @@ export const OrganizationProduct = ({
   Description,
   Price,
   Image,
+  Stock,
 }) => {
   const { userDetails } = useContext(UserDetailsContext);
   const [CompanyName, SetCompanyName] = useState("");
@@ -37,6 +38,8 @@ export const OrganizationProduct = ({
       <div className="orgproduct-price-btn">
         <p>
           <span>{Price}</span>$
+          <br />
+          <span>Stock: {Stock}</span>
         </p>
         {/* <Link
           to={`/organization/campaigns/${CampaignID}/orgproducts/${Id}`}

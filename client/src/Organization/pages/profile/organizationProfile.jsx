@@ -133,6 +133,12 @@ export const OrganizationProfilePage = (props) => {
                         }
                       </h6>
                     </div>
+                    <div className="col-sm-6">
+                      <p className="m-b-10 f-w-600">Create Date</p>
+                      <h6 className="text-muted f-w-400">
+                        {userDetails.CreateDate}
+                      </h6>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -25,6 +25,7 @@ namespace server.Data.Sql
                 user.Url = reader.GetString(reader.GetOrdinal("Url"));
                 user.Status = reader.GetDecimal(reader.GetOrdinal("Status"));
                 user.TwitterHandle = reader.GetString(reader.GetOrdinal("TwitterHandle"));
+                user.CreateDate = reader.GetDateTime(reader.GetOrdinal("CreateDate")).ToString("yyyy-MM-dd");
                 usersList.Add(user.UserID, user);
             }
             return usersList;
@@ -43,6 +44,7 @@ namespace server.Data.Sql
                 user.Url = reader.GetString(reader.GetOrdinal("Url"));
                 user.Status = reader.GetDecimal(reader.GetOrdinal("Status"));
                 user.TwitterHandle = reader.GetString(reader.GetOrdinal("TwitterHandle"));
+                user.CreateDate = reader.GetDateTime(reader.GetOrdinal("CreateDate")).ToString("yyyy-MM-dd");
             }
             return user;
         }
@@ -57,11 +59,11 @@ namespace server.Data.Sql
                 return null;
             }
         }
-        public void InsertUserToDB(string UserID, string Role, string Name, string Address, string Phone, string Url, decimal Status, string TwitterHandle)
+        public void InsertUserToDB(string UserID, string Role, string Name, string Address, string Phone, string Url, decimal Status, string TwitterHandle, string CreateDate)
         {
             try
             {
-                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Users(UserID, Role, Name, Address, Phone, Url, Status, TwitterHandle) Values('{UserID}','{Role}','{Name}','{Address}','{Phone}','{Url}','{Status}','{TwitterHandle}')");
+                DAL.SqlQuery.RunNonQueryCommand($"Insert Into Users(UserID, Role, Name, Address, Phone, Url, Status, TwitterHandle, CreateDate) Values('{UserID}','{Role}','{Name}','{Address}','{Phone}','{Url}','{Status}','{TwitterHandle}','{CreateDate}')");
             }
             catch (Exception ex)
             {

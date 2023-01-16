@@ -44,7 +44,7 @@
   margin-bottom: 20px !important;
 } */
 .orgcampaignDetails-details-text > p {
-  height: 180px;
+  height: 150px;
   margin-top: 0;
   font-family: "Playfair Display", serif;
   color: #798fb4;
@@ -61,7 +61,7 @@
 }
 
 .orgcampaignDetails-details > p {
-  height: 100px;
+  height: 140px;
   text-align: left;
   margin-left: -20px;
   font-family: "Playfair Display", serif;
@@ -165,4 +165,12 @@
 
 .orgcampaignDetails-btn4 .orglink-btn4:hover {
   background-color: #bbd2c5 !important;
+}
+
+.spanOnlyDate {
+  width: 171px !important;
+  text-overflow: clip;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: -27px;
 }

@@ -13,7 +13,7 @@ export const OrganizationCampaign = ({
   //let OrganizationName=await getOrganizationById(OrganizationID).data.Name;
 
   return (
-    <div className="campaign-info">
+    <div className="campaign-info2">
       <div className="campaign-text">
         <h1>{Name}</h1>
         <p>{Description}</p>

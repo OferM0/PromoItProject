@@ -10,6 +10,16 @@
   background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%) !important;
 }
 
+.statusInfo {
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 50px;
+  font-size: 28px;
+  font-weight: 600;
+  font-family: "Archivo";
+  color: white;
+}
+
 .noConnectedProducts {
   display: flex;
   flex-direction: row;

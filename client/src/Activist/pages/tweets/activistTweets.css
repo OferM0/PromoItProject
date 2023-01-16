@@ -1,0 +1,24 @@
+.tweetsPage2 {
+  overflow-y: hidden;
+  flex-direction: column !important;
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: 100vh !important;
+  flex-wrap: wrap !important;
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%) !important;
+}
+
+.tweetsList2 {
+  margin-right: 25px;
+  margin-left: 25px;
+  margin-top: 50px;
+  align-self: center;
+  border-radius: 15px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  width: 900px;
+}

@@ -8,6 +8,7 @@ import { getProductById, addProduct } from "../../../services/product.service";
 import { useAuth0 } from "@auth0/auth0-react";
 import { ToastContainer, toast } from "react-toastify";
 import { getUserById, updateUserById } from "../../../services/user.service";
+import { postTweetsByManager } from "../../../services/twitter.service";
 
 const showToastMessage = () => {
   toast.success(
@@ -78,15 +79,18 @@ export const ActivistProduct = ({
   Description,
   Price,
   Image,
+  Stock,
 }) => {
   const [product, setProduct] = useState({});
-  const { userDetails } = useContext(UserDetailsContext);
+  const { userDetails, setUserDetails } = useContext(UserDetailsContext);
   const { user } = useAuth0();
   const [CompanyName, SetCompanyName] = useState("");
+  const [CompanyTwitterHandle, SetCompanyTwitterHandle] = useState("");
   const fetchData1 = async () => {
     let response = await getUserById(CompanyID);
     if (response.status === 200) {
       SetCompanyName(response.data.Name);
+      SetCompanyTwitterHandle(response.data.TwitterHandle);
     }
   };
 
@@ -113,7 +117,15 @@ export const ActivistProduct = ({
       </div>
       <div className="orgproduct-price-btn">
         <p>
-          <span>{Price}</span>$
+          <span>{Price}$</span>
+          {Stock > 0 ? (
+            <>
+              <br />
+              <span>Stock: {Stock}</span>
+            </>
+          ) : (
+            <></>
+          )}
         </p>
         <>
           {product.ActivistID !== user.sub ? (
@@ -122,12 +134,22 @@ export const ActivistProduct = ({
               // state={{ CampaignID, Id }}
               className="link-btn"
               onClick={async () => {
-                if (userDetails.Status > product.Price) {
+                if (userDetails.Status >= product.Price) {
                   showToastMessage();
                   showActivistInfo();
                   product.ActivistID = user.sub;
                   //console.log(product);
                   await updateProductById(Id, product);
+                  let newStatus = userDetails.Status - product.Price;
+                  let newUserDetails = userDetails;
+                  newUserDetails.Status = newStatus;
+                  setUserDetails(newUserDetails);
+                  await updateUserById(user.sub, newUserDetails);
+                  await postTweetsByManager(
+                    userDetails.TwitterHandle,
+                    CompanyTwitterHandle,
+                    Id
+                  );
                 } else {
                   showErrorMessage();
                 }
@@ -135,7 +157,8 @@ export const ActivistProduct = ({
             >
               Buy
             </button>
-          ) : product.Shipped === false ? (
+          ) : product.Shipped === false &&
+            product.DonatedByActivist === false ? (
             <button
               className="link-btn"
               onClick={async () => {
@@ -149,8 +172,10 @@ export const ActivistProduct = ({
             >
               Donate
             </button>
+          ) : product.Shipped === true ? (
+            <p className="product-status-info">Shipped</p>
           ) : (
-            <></>
+            <p className="product-status-info">Donated</p>
           )}
         </>
 

@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export const OrganizationProductsPage = (props) => {
   const [productsArr, setProductsArr] = useState([]);
+  const [sortProductsArr, setSortProductsArr] = useState([]);
   const navigate = useNavigate();
   const { user } = useAuth0();
   const location = useLocation();
@@ -18,6 +19,26 @@ export const OrganizationProductsPage = (props) => {
     let response = await getProducts();
     if (response.status === 200) {
       setProductsArr(response.data);
+      setSortProductsArr(
+        Object.values(
+          Object.values(response.data)
+            .filter(
+              (product) =>
+                product.CampaignID === Id && product.ActivistID === ""
+            )
+            .reduce((acc, obj) => {
+              const modifiedObject = { ...obj };
+              delete modifiedObject.Id;
+              const key = JSON.stringify(modifiedObject);
+              if (!acc[key]) {
+                acc[key] = [];
+              }
+              acc[key].push(obj);
+              return acc;
+            }, {})
+        )
+      );
+      console.log(sortProductsArr);
     }
   };
 
@@ -27,10 +48,10 @@ export const OrganizationProductsPage = (props) => {
 
   return (
     <div className="productsPage">
-      {productsArr.map((product) => {
-        if (product.CampaignID === Id) {
+      {sortProductsArr.map((product) => {
+        if (product[0].CampaignID === Id) {
           check = true;
-          let { CompanyID, Id, Name, Description, Price, Image } = product;
+          let { CompanyID, Id, Name, Description, Price, Image } = product[0];
           return (
             <OrganizationProduct
               CampaignID={CampaignID}
@@ -40,6 +61,7 @@ export const OrganizationProductsPage = (props) => {
               Description={Description}
               Price={Price}
               Image={Image}
+              Stock={product.length}
             ></OrganizationProduct>
           );
         }
