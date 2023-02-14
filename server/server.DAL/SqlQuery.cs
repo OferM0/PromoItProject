@@ -35,6 +35,7 @@ namespace server.DAL
             catch (Exception ex)
             {
                 Console.WriteLine("An error occurred: " + ex.Message);
+                throw;
             }
         }
         public static void RunCommand(string sqlQuery, SetDataReader_delegate func)
@@ -59,7 +60,8 @@ namespace server.DAL
             }
             catch (Exception ex)
             {
-                Console.WriteLine("An error occurred: " + ex.Message);
+                Console.WriteLine("An error occurred: " + ex.Message); 
+                throw;
             }
         }
 
@@ -88,6 +90,7 @@ namespace server.DAL
             catch (Exception ex)
             {
                 Console.WriteLine("An error occurred: " + ex.Message);
+                throw;
             }
             return ret;
         }
