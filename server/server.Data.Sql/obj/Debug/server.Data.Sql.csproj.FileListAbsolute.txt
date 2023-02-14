@@ -20,3 +20,7 @@ C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\Promo
 C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\obj\Debug\server.Data.Sql.csproj.CopyComplete
 C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\obj\Debug\server.Data.Sql.dll
 C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\obj\Debug\server.Data.Sql.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\bin\Debug\Utilities.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\bin\Debug\Utilities.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\bin\Debug\server.Data.Sql.dll.config
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\server.Data.Sql\bin\Debug\server.Model.dll.config

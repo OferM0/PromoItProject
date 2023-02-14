@@ -12,6 +12,7 @@ using server.Entities;
 
 namespace server.MicroService
 {
+    /*
     public static class Organizations
     {
         [FunctionName("Organizations")]
@@ -20,19 +21,19 @@ namespace server.MicroService
             string action, string UserID, ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
-            /*string name = req.Query["name"];
+            string name = req.Query["name"];
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
             name = name ?? data?.name;
-            */
+            
             string responseMessage = "";
-            Entities.Organizations helper = new Entities.Organizations();
+            //Entities.Organizations helper = new Entities.Organizations(MainManager.Instance.log);
 
             switch (action)
             {
                 case "Add":
                     Organization o = System.Text.Json.JsonSerializer.Deserialize<Organization>(req.Body); //convert from json to organizations object after post(react-axios)
-                    helper.AddNewOrganization(o.UserID, o.Name, o.Address, o.Phone, o.Url); //add to DB- run sql command and to list
+                    MainManager.Instance.organizations.AddNewOrganization(o.UserID, o.Name, o.Address, o.Phone, o.Url); //add to DB- run sql command and to list
                     responseMessage = System.Text.Json.JsonSerializer.Serialize(o); //to see if the new Organization object updated
                     return new OkObjectResult(responseMessage);
                     break;
@@ -40,7 +41,7 @@ namespace server.MicroService
                 case "Remove":
                     if (UserID != null) //remove only by OrganizationID
                     {
-                        helper.DeleteOrganizationById(UserID);
+                        MainManager.Instance.organizations.DeleteOrganizationById(UserID);
                     }
                     break;
 
@@ -48,7 +49,7 @@ namespace server.MicroService
                     if (UserID != null) //update only by OrganizationID
                     {
                         Organization o2 = System.Text.Json.JsonSerializer.Deserialize<Organization>(req.Body);
-                        helper.UpdateOrganizationById(UserID, o2.Name, o2.Address, o2.Phone, o2.Url);
+                        MainManager.Instance.organizations.UpdateOrganizationById(UserID, o2.Name, o2.Address, o2.Phone, o2.Url);
                         responseMessage = System.Text.Json.JsonSerializer.Serialize(o2);
                         return new OkObjectResult(responseMessage);
                     }
@@ -63,7 +64,7 @@ namespace server.MicroService
                     }
                     else //get by OrganizationID
                     {
-                        responseMessage = System.Text.Json.JsonSerializer.Serialize(helper.GetOrganizationById(UserID));
+                        responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.organizations.GetOrganizationById(UserID));
                         return new OkObjectResult(responseMessage);
                     }
                     break;
@@ -71,5 +72,5 @@ namespace server.MicroService
 
             return new OkObjectResult(responseMessage);
         }
-    }
+    }*/
 }

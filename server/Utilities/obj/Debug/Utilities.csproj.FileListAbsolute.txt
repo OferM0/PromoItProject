@@ -1,0 +1,9 @@
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\Utilities\obj\Debug\Utilities.csproj.AssemblyReference.cache
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\Utilities\obj\Debug\Utilities.csproj.CoreCompileInputs.cache
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\Utilities\bin\Debug\Utilities.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\Utilities\bin\Debug\Utilities.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\Utilities\obj\Debug\Utilities.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\Utilities\obj\Debug\Utilities.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\Utilities\bin\Debug\server.DAL.dll
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\Utilities\bin\Debug\server.DAL.pdb
+C:\Users\oferm\source\repos\C learning\assigments\SEMESTER 2\littleProject\PromoItProject\server\Utilities\obj\Debug\Utilities.csproj.CopyComplete

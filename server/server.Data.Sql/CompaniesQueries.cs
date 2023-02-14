@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using server.Model;
+using Utilities;
 
 namespace server.Data.Sql
-{
-    public class CompaniesQueries
+{/*
+    public class CompaniesQueries : BaseDataSql
     {
+        public CompaniesQueries(Logger log) : base(log) { }
+
         public Dictionary<string, Company> BuildCompaniesList(SqlDataReader reader)
         {
             Dictionary<string, Company> companiesList = new Dictionary<string, Company>();
@@ -94,5 +97,5 @@ namespace server.Data.Sql
 
             }
         }
-    }
+    }*/
 }

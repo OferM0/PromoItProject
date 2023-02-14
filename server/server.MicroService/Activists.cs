@@ -11,7 +11,7 @@ using server.Model;
 using server.Entities;
 
 namespace server.MicroService
-{
+{/*
     public static class Activists
     {
         [FunctionName("Activists")]
@@ -20,19 +20,19 @@ namespace server.MicroService
              string action, string UserID, ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
-            /*string name = req.Query["name"];
+            string name = req.Query["name"];
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
             name = name ?? data?.name;
-            */
+            
             string responseMessage = "";
-            Entities.Activists helper = new Entities.Activists();
+            //Entities.Activists helper = new Entities.Activists(MainManager.Instance.log);
 
             switch (action)
             {
                 case "Add":
                     Activist a = System.Text.Json.JsonSerializer.Deserialize<Activist>(req.Body); //convert from json to activists object after post(react-axios)
-                    helper.AddNewActivist(a.UserID, a.Name, a.Address, a.Phone, a.Money); //add to DB- run sql command and to list
+                    MainManager.Instance.activists.AddNewActivist(a.UserID, a.Name, a.Address, a.Phone, a.Money); //add to DB- run sql command and to list
                     responseMessage = System.Text.Json.JsonSerializer.Serialize(a); //to see if the new Activist object updated
                     return new OkObjectResult(responseMessage);
                     break;
@@ -40,7 +40,7 @@ namespace server.MicroService
                 case "Remove":
                     if (UserID != null) //remove only by ActivistID
                     {
-                        helper.DeleteActivistById(UserID);
+                        MainManager.Instance.activists.DeleteActivistById(UserID);
                     }
                     break;
 
@@ -48,7 +48,7 @@ namespace server.MicroService
                     if (UserID != null) //update only by ActivistID
                     {
                         Activist a2 = System.Text.Json.JsonSerializer.Deserialize<Activist>(req.Body);
-                        helper.UpdateActivistById(UserID, a2.Name, a2.Address, a2.Phone, a2.Money);
+                        MainManager.Instance.activists.UpdateActivistById(UserID, a2.Name, a2.Address, a2.Phone, a2.Money);
                         responseMessage = System.Text.Json.JsonSerializer.Serialize(a2);
                         return new OkObjectResult(responseMessage);
                     }
@@ -63,7 +63,7 @@ namespace server.MicroService
                     }
                     else //get by ActivistID
                     {
-                        responseMessage = System.Text.Json.JsonSerializer.Serialize(helper.GetActivistById(UserID));
+                        responseMessage = System.Text.Json.JsonSerializer.Serialize(MainManager.Instance.activists.GetActivistById(UserID));
                         return new OkObjectResult(responseMessage);
                     }
                     break;
@@ -71,5 +71,5 @@ namespace server.MicroService
 
             return new OkObjectResult(responseMessage);
         }
-    }
+    }*/
 }

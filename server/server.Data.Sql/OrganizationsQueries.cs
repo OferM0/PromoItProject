@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using server.Model;
+using Utilities;
 
 namespace server.Data.Sql
-{
-    public class OrganizationsQueries
+{/*
+    public class OrganizationsQueries : BaseDataSql
     {
+        public OrganizationsQueries(Logger log) : base(log) { }
+
         public Dictionary<string, Organization> BuildOrganizationsList(SqlDataReader reader)
         {
             Dictionary<string, Organization> organizationsList = new Dictionary<string, Organization>();
@@ -96,5 +99,5 @@ namespace server.Data.Sql
 
             }
         }
-    }
+    }*/
 }

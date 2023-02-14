@@ -5,12 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using server.Data.Sql;
 using server.Model;
+using Utilities;
 
 namespace server.Entities
-{
-    public class Organizations
+{/*
+    public class Organizations : BaseEntity
     {
-        OrganizationsQueries organizationsQueries = new OrganizationsQueries();
+        public Organizations(Logger log) : base(log) { organizationsQueries = new OrganizationsQueries(base._log); }
+
+        OrganizationsQueries organizationsQueries;
 
         public void ClearList()
         {
@@ -58,15 +61,9 @@ namespace server.Entities
 
         public void DeleteOrganizationById(string UserID)
         {
-            /*if (MainManager.Instance.organizationsList.Count == 0)
-            {
-
-            }
-            else
-            {
-                MainManager.Instance.organizationsList.RemoveAt(UserID);*/
+            //if (MainManager.Instance.organizationsList.Count == 0){}else{MainManager.Instance.organizationsList.RemoveAt(UserID);
             organizationsQueries.DeleteOrganizationFromDB(UserID);
             //}
         }
-    }
+    }*/
 }

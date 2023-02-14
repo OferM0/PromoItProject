@@ -364,7 +364,7 @@ export const RegistrationPage = () => {
                         handleSubmit();
                         showToastMessage();
                         await sleep(2000); //we want the user to be notified to the message
-                        //logout({ returnTo: window.location.origin });
+                        logout({ returnTo: window.location.origin });
                       }
                     }}
                   >

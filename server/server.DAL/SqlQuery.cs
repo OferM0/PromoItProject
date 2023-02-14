@@ -17,55 +17,77 @@ namespace server.DAL
 
         public static void RunNonQueryCommand(string sqlQuery)
         {
-            string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=PromoIt;Data Source=localhost\\sqlexpress"/*ConfigurationManager.AppSettings["connectionString"]*/;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                string queryString = sqlQuery;
-                // Adapter
-                using (SqlCommand command = new SqlCommand(queryString, connection))
+                //string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=PromoIt;Data Source=localhost\\sqlexpress"/*ConfigurationManager.AppSettings["connectionString"]*/;
+                using (SqlConnection connection = new SqlConnection(Environment.GetEnvironmentVariable("MyConnectionString")))
                 {
-                    connection.Open();
-                    //Reader
-                    command.ExecuteNonQuery();
+                    string queryString = sqlQuery;
+                    // Adapter
+                    using (SqlCommand command = new SqlCommand(queryString, connection))
+                    {
+                        connection.Open();
+                        //Reader
+                        command.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred: " + ex.Message);
             }
         }
         public static void RunCommand(string sqlQuery, SetDataReader_delegate func)
         {
-            string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=PromoIt;Data Source=localhost\\sqlexpress"/*ConfigurationManager.AppSettings["connectionString"]*/;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                string queryString = sqlQuery;
-                // Adapter
-                using (SqlCommand command = new SqlCommand(queryString, connection))
+                //string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=PromoIt;Data Source=localhost\\sqlexpress"/*ConfigurationManager.AppSettings["connectionString"]*/;
+                using (SqlConnection connection = new SqlConnection(Environment.GetEnvironmentVariable("MyConnectionString")))
                 {
-                    connection.Open();
-                    //Reader
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    string queryString = sqlQuery;
+                    // Adapter
+                    using (SqlCommand command = new SqlCommand(queryString, connection))
                     {
-                        func(reader);
+                        connection.Open();
+                        //Reader
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            func(reader);
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred: " + ex.Message);
             }
         }
 
         public static object RunCommandResult(string sqlQuery, SetResulrDataReader_delegate func)
         {
             object ret = null;
-            string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=PromoIt;Data Source=localhost\\sqlexpress"/*ConfigurationManager.AppSettings["connectionString"]*/;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                string queryString = sqlQuery;
-                // Adapter
-                using (SqlCommand command = new SqlCommand(queryString, connection))
+                //string connectionString = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=PromoIt;Data Source=localhost\\sqlexpress"/*ConfigurationManager.AppSettings["connectionString"]*/;
+                using (SqlConnection connection = new SqlConnection(Environment.GetEnvironmentVariable("MyConnectionString")))
                 {
-                    connection.Open();
-                    //Reader
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    string queryString = sqlQuery;
+                    // Adapter
+                    using (SqlCommand command = new SqlCommand(queryString, connection))
                     {
-                        ret = func(reader);
+                        connection.Open();
+                        //Reader
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            ret = func(reader);
+
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred: " + ex.Message);
             }
             return ret;
         }

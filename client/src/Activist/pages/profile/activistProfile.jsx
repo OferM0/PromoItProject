@@ -161,9 +161,9 @@ export const ActivistProfilePage = (props) => {
                   <h6>{userDetails.Role}</h6>
                   <div
                     className="moneyStatus"
-                    onClick={async () => {
+                    /*onClick={async () => {
                       await calculateStatus();
-                    }}
+                    }}*/
                   >
                     Status:{" "}
                     {

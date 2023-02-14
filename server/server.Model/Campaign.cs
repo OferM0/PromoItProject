@@ -16,5 +16,6 @@ namespace server.Model
         public string Hashtag { get; set; }
         public bool Active { get; set; }
         public string CreateDate { get; set; }
+
     }
 }

@@ -5,12 +5,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace server.Entities
-{
-    public class Activists
+{/*
+    public class Activists:BaseEntity
     {
-        ActivistsQueries activistsQueries = new ActivistsQueries();
+        public Activists(Logger log) : base(log)
+        {
+            activistsQueries = new ActivistsQueries(base._log);
+        }
+        ActivistsQueries activistsQueries;
 
         public void ClearList()
         {
@@ -58,15 +63,9 @@ namespace server.Entities
 
         public void DeleteActivistById(string UserID)
         {
-            /*if (MainManager.Instance.activistsList.Count == 0)
-            {
-
-            }
-            else
-            {
-                MainManager.Instance.activistsList.RemoveAt(ActivistID);*/
+            //if (MainManager.Instance.activistsList.Count == 0){}else{MainManager.Instance.activistsList.RemoveAt(ActivistID);
             activistsQueries.DeleteActivistFromDB(UserID);
             //}
         }
-    }
+    }*/
 }

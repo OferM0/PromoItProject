@@ -5,11 +5,14 @@ using server.Model;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace server.Data.Sql
-{
-    public class ActivistsQueries
+{/*
+    public class ActivistsQueries:BaseDataSql
     {
+        public ActivistsQueries(Logger log) : base(log) { }
+
         public Dictionary<string, Activist> BuildActivistsList(SqlDataReader reader)
         {
             Dictionary<string, Activist> activistsList = new Dictionary<string, Activist>();
@@ -96,5 +99,5 @@ namespace server.Data.Sql
 
             }
         }
-    }
+    }*/
 }
